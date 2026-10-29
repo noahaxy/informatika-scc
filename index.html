@@ -45,11 +45,12 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #94a3b8; 
         }
-        .view-section { display: none; }
-        .active-view { display: block; }
+        /* !important agar tidak dikalahkan class Tailwind "flex" pada tiap halaman */
+        .view-section:not(.active-view) { display: none !important; }
+        .view-section.active-view { display: flex !important; }
         
-        .lkpd-tab-content { display: none; }
-        .lkpd-tab-active { display: block; }
+        .lkpd-tab-content:not(.lkpd-tab-active) { display: none !important; }
+        .lkpd-tab-active { display: block !important; }
 
         /* Spreadsheet-like table borders */
         .sheet-table th, .sheet-table td {
