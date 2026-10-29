@@ -68,6 +68,144 @@
         }
         .toast-enter { animation: slideIn 0.3s ease-out forwards; }
         .toast-exit { animation: fadeOut 0.3s ease-out forwards; }
+        /* ===== CSS halaman LKPD (di-scope agar tidak mengganggu halaman lain) ===== */
+#view-lkpd .app{color-scheme:light;--site-primary:#245b4a;--site-on-primary:#ffffff;--site-secondary:#f1c66d;--site-on-secondary:#27362f;--site-background:#f5f6ef;--site-on-background:#1d2d27;--site-font-body:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--site-font-heading:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--site-heading-scale:1;--site-spacing-scale:1;--site-radius-scale:1;--site-decoration-opacity:1;--surface:#ffffff;--surface-soft:#edf3ee;--text:#20342c;--muted:#63766c;--line:#dce5dd;--green:#245b4a;--shadow:0 12px 35px rgba(25,54,41,.08)}
+#view-lkpd .app *{box-sizing:border-box}
+#view-lkpd .app{margin:0;font-family:var(--site-font-body);background:var(--site-background);color:var(--text)}
+#view-lkpd .app button,#view-lkpd .app input,#view-lkpd .app textarea,#view-lkpd .app select{font:inherit}
+#view-lkpd .app button{cursor:pointer}
+#view-lkpd .app{min-height:100vh;background-color:var(--site-background);color:var(--site-on-background);border-radius:0}
+#view-lkpd .app .topbar{background:var(--site-primary);color:var(--site-on-primary);padding:calc(18px * var(--site-spacing-scale)) max(20px,calc((100vw - 1220px)/2));display:flex;justify-content:space-between;align-items:center;gap:20px}
+#view-lkpd .app .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.03em}
+#view-lkpd .app .brand-icon{width:42px;height:42px;border-radius:14px;background:var(--site-secondary);color:var(--site-on-secondary);display:grid;place-items:center;font-size:22px}
+#view-lkpd .app .brand small{display:block;font-weight:500;letter-spacing:0;opacity:.78;font-size:12px;margin-top:2px}
+#view-lkpd .app .top-actions{display:flex;align-items:center;gap:10px;font-size:13px}
+#view-lkpd .app .pill{border:1px solid #ffffff55;padding:8px 12px;border-radius:999px}
+#view-lkpd .app .hero{background:linear-gradient(120deg,var(--site-primary),#34745c);color:white;padding:36px max(20px,calc((100vw - 1220px)/2)) 42px;position:relative;overflow:hidden}
+#view-lkpd .app .hero:after{content:"";position:absolute;width:280px;height:280px;border:42px solid #ffffff15;border-radius:50%;right:5%;top:-140px;pointer-events:none}
+#view-lkpd .app .eyebrow{text-transform:uppercase;font-size:11px;letter-spacing:.14em;font-weight:800;color:var(--site-secondary)}
+#view-lkpd .app h1{font-size:calc(38px * var(--site-heading-scale));line-height:1.08;letter-spacing:-.045em;margin:10px 0 14px;max-width:700px}
+#view-lkpd .app h2{font-size:calc(23px * var(--site-heading-scale));letter-spacing:-.03em;margin:0 0 10px}
+#view-lkpd .app h3{font-size:17px;margin:0 0 8px}
+#view-lkpd .app .hero p{max-width:680px;line-height:1.65;color:#e0eee5;margin:0}
+#view-lkpd .app .hero-bottom{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:24px}
+#view-lkpd .app .btn{border:0;border-radius:12px;padding:11px 16px;font-weight:750;transition:transform .15s,opacity .15s}
+#view-lkpd .app .btn:hover{transform:translateY(-1px)}
+#view-lkpd .app .btn-primary{background:var(--site-secondary);color:var(--site-on-secondary)}
+#view-lkpd .app .btn-light{background:var(--surface);color:var(--text);border:1px solid var(--line)}
+#view-lkpd .app .btn-dark{background:var(--site-primary);color:var(--site-on-primary)}
+#view-lkpd .app .btn-small{padding:8px 11px;font-size:13px}
+#view-lkpd .app .progress-text{font-size:13px;color:#e0eee5}
+#view-lkpd .app .layout{max-width:1220px;margin:26px auto 60px;padding:0 20px;display:grid;grid-template-columns:265px minmax(0,1fr);gap:22px;align-items:start}
+#view-lkpd .app .sidebar{position:sticky;top:16px;display:flex;flex-direction:column;gap:16px}
+#view-lkpd .app .panel,#view-lkpd .app .content-card{background:var(--surface);border:1px solid var(--line);border-radius:calc(18px * var(--site-radius-scale));box-shadow:var(--shadow)}
+#view-lkpd .app .panel{padding:17px}
+#view-lkpd .app .student-card{display:flex;align-items:center;gap:12px}
+#view-lkpd .app .avatar{width:42px;height:42px;border-radius:14px;background:var(--surface-soft);display:grid;place-items:center;font-size:21px}
+#view-lkpd .app .student-card b{display:block;font-size:14px}
+#view-lkpd .app .student-card span{font-size:12px;color:var(--muted)}
+#view-lkpd .app .side-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:var(--muted);margin:2px 0 10px}
+#view-lkpd .app .stage-list{display:flex;flex-direction:column;gap:5px}
+#view-lkpd .app .stage-btn{display:flex;align-items:center;gap:11px;width:100%;text-align:left;background:transparent;border:0;padding:10px;border-radius:12px;color:var(--text)}
+#view-lkpd .app .stage-btn:hover{background:var(--surface-soft)}
+#view-lkpd .app .stage-btn.active{background:var(--site-primary);color:var(--site-on-primary)}
+#view-lkpd .app .stage-num{width:28px;height:28px;border-radius:9px;border:1px solid var(--line);display:grid;place-items:center;font-size:12px;font-weight:800;flex-shrink:0}
+#view-lkpd .app .stage-btn.active .stage-num{border-color:#ffffff66}
+#view-lkpd .app .stage-copy b{font-size:13px;display:block}
+#view-lkpd .app .stage-copy small{font-size:11px;opacity:.75}
+#view-lkpd .app .stage-btn.done .stage-num{background:#d8f3df;color:#1f6842;border-color:#d8f3df}
+#view-lkpd .app .scc-box{background:var(--surface-soft);border-radius:14px;padding:13px;margin-top:12px}
+#view-lkpd .app .scc-box p{font-size:12px;color:var(--muted);line-height:1.5;margin:5px 0 10px}
+#view-lkpd .app .scc-chips{display:flex;gap:5px;flex-wrap:wrap}
+#view-lkpd .app .chip{border-radius:999px;padding:5px 8px;font-size:10px;font-weight:800}
+#view-lkpd .app .core{background:#dceee3;color:#245b4a}
+#view-lkpd .app .support{background:#fff0c9;color:#73500a}
+#view-lkpd .app .challenge{background:#e8e1ff;color:#5541a0}
+#view-lkpd .app .main{min-width:0}
+#view-lkpd .app .stage-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:18px}
+#view-lkpd .app .stage-kicker{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--green);font-weight:850;margin-bottom:7px}
+#view-lkpd .app .stage-head p,#view-lkpd .app .muted{color:var(--muted);line-height:1.65;margin:0}
+#view-lkpd .app .stage-tag{border:1px solid var(--line);border-radius:999px;padding:7px 10px;font-size:11px;white-space:nowrap}
+#view-lkpd .app .content-card{padding:22px;margin-bottom:16px}
+#view-lkpd .app .section-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:13px}
+#view-lkpd .app .section-row p{margin:0;color:var(--muted);font-size:13px}
+#view-lkpd .app .prompt{padding:16px;border-left:4px solid var(--site-secondary);background:var(--surface-soft);border-radius:0 12px 12px 0;line-height:1.65;margin:16px 0}
+#view-lkpd .app .question-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#view-lkpd .app .question-card{border:1px solid var(--line);border-radius:13px;padding:14px}
+#view-lkpd .app .question-card .q-icon{font-size:20px;margin-bottom:8px}
+#view-lkpd .app .question-card p{margin:5px 0 0;color:var(--muted);font-size:13px;line-height:1.5}
+#view-lkpd .app .field{display:flex;flex-direction:column;gap:7px;margin:12px 0}
+#view-lkpd .app .field label{font-size:13px;font-weight:700}
+#view-lkpd .app .field input,#view-lkpd .app .field textarea,#view-lkpd .app .field select{width:100%;background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px 12px;outline:none}
+#view-lkpd .app .field input:focus,#view-lkpd .app .field textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px #76bd9630}
+#view-lkpd .app .field textarea{min-height:82px;resize:vertical}
+#view-lkpd .app .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:14px 0}
+#view-lkpd .app .data-table{width:100%;border-collapse:collapse;font-size:13px;min-width:620px}
+#view-lkpd .app .data-table th{background:var(--surface-soft);text-align:left;font-size:11px;color:var(--muted);padding:12px 13px}
+#view-lkpd .app .data-table td{padding:11px 13px;border-top:1px solid var(--line)}
+#view-lkpd .app .data-table td:last-child,#view-lkpd .app .data-table th:last-child{text-align:right}
+#view-lkpd .app .number{font-variant-numeric:tabular-nums}
+#view-lkpd .app .mini-stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+#view-lkpd .app .mini-stat{padding:14px;background:var(--surface-soft);border-radius:12px}
+#view-lkpd .app .mini-stat span{display:block;color:var(--muted);font-size:11px;margin-bottom:6px}
+#view-lkpd .app .mini-stat b{font-size:17px}
+#view-lkpd .app .formula-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#view-lkpd .app .formula-card{border:1px solid var(--line);border-radius:12px;padding:13px}
+#view-lkpd .app .formula-card label{font-size:12px;font-weight:800;display:block;margin-bottom:8px}
+#view-lkpd .app .formula-card input{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px}
+#view-lkpd .app .feedback{font-size:12px;margin-top:7px;min-height:16px;color:var(--muted)}
+#view-lkpd .app .feedback.good{color:#2d9b60}
+#view-lkpd .app .feedback.bad{color:#c65a46}
+#view-lkpd .app .inline-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+#view-lkpd .app .callout{border:1px solid var(--line);border-radius:13px;padding:15px;display:flex;gap:12px;align-items:flex-start;margin:12px 0}
+#view-lkpd .app .callout .symbol{font-size:21px}
+#view-lkpd .app .callout p{margin:4px 0 0;color:var(--muted);font-size:13px;line-height:1.5}
+#view-lkpd .app .support-panel{border:1px solid #e9d69d;background:#fff9e9;border-radius:15px;padding:16px;margin:14px 0}
+#view-lkpd .app .support-panel summary{cursor:pointer;font-weight:800}
+#view-lkpd .app .support-panel p,#view-lkpd .app .support-panel li{font-size:13px;line-height:1.65}
+#view-lkpd .app .hint-row{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+#view-lkpd .app .hint-btn{border:1px solid #d7c27d;background:transparent;color:var(--text);padding:8px 10px;border-radius:9px;font-size:12px;font-weight:700}
+#view-lkpd .app .hint-content{padding:12px;border-radius:10px;background:var(--surface);font-size:13px;line-height:1.6;margin-top:9px}
+#view-lkpd .app .notice{padding:12px 14px;border-radius:12px;background:var(--surface-soft);font-size:13px;line-height:1.6;margin:12px 0}
+#view-lkpd .app .answer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#view-lkpd .app .answer-box{border:1px solid var(--line);border-radius:13px;padding:14px}
+#view-lkpd .app .answer-box .field{margin-bottom:0}
+#view-lkpd .app .nav-bottom{display:flex;justify-content:space-between;gap:10px;margin-top:20px}
+#view-lkpd .app .nav-bottom .btn{min-width:120px}
+#view-lkpd .app .rubric{width:100%;border-collapse:collapse;font-size:12px}
+#view-lkpd .app .rubric td,#view-lkpd .app .rubric th{border-bottom:1px solid var(--line);padding:10px;text-align:left}
+#view-lkpd .app .rubric th{color:var(--muted)}
+#view-lkpd .app .status-note{font-size:12px;color:var(--muted);margin-top:10px}
+#view-lkpd .app .toast{position:fixed;right:20px;bottom:20px;max-width:340px;padding:14px 18px;background:var(--site-primary);color:white;border-radius:12px;box-shadow:var(--shadow);display:none;z-index:5}
+#view-lkpd .app .toast.show{display:block}
+#view-lkpd .app .footer{text-align:center;padding:18px;color:var(--muted);font-size:12px}
+#view-lkpd .app .hidden{display:none!important}
+@media(max-width:850px){#view-lkpd .app .layout{grid-template-columns:1fr;margin-top:16px}
+#view-lkpd .app .sidebar{position:static}
+#view-lkpd .app .stage-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+#view-lkpd .app .scc-box{display:none}
+#view-lkpd .app .hero{padding-top:28px}
+#view-lkpd .app .topbar{align-items:flex-start}
+#view-lkpd .app .top-actions .pill{display:none}}
+@media(max-width:560px){#view-lkpd .app h1{font-size:32px}
+#view-lkpd .app .hero{padding-left:18px;padding-right:18px}
+#view-lkpd .app .topbar{padding:14px 18px}
+#view-lkpd .app .layout{padding:0 12px}
+#view-lkpd .app .content-card{padding:16px}
+#view-lkpd .app .question-grid,#view-lkpd .app .formula-list,#view-lkpd .app .answer-grid{grid-template-columns:1fr}
+#view-lkpd .app .mini-stat-grid{grid-template-columns:1fr}
+#view-lkpd .app .stage-list{grid-template-columns:1fr 1fr}
+#view-lkpd .app .stage-btn{padding:8px}
+#view-lkpd .app .stage-copy b{font-size:12px}
+#view-lkpd .app .stage-copy small{font-size:10px}
+#view-lkpd .app .stage-head{flex-direction:column}
+#view-lkpd .app .nav-bottom .btn{min-width:0;flex:1}}
+#view-lkpd .app{min-height:0}
+#view-lkpd .side-actions{display:flex;flex-direction:column;gap:8px}
+#view-lkpd .side-actions .btn{text-align:left}
+#view-lkpd .app .stage-btn.challenge-btn.active{background:#5541a0}
+#view-lkpd .app button:disabled{opacity:.55;cursor:not-allowed}
+
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 h-screen w-screen overflow-hidden flex flex-col">
@@ -365,7 +503,6 @@
 
     <!-- 5. HALAMAN LKPD -->
     <div id="view-lkpd" class="view-section h-full flex flex-col bg-white">
-        <!-- Header LKPD -->
         <header class="bg-brand-700 text-white px-4 py-3 shadow-md flex items-center justify-between z-10 shrink-0">
             <div class="flex items-center gap-3">
                 <button onclick="navigateTo('view-menu')" class="p-1.5 hover:bg-brand-600 rounded transition-colors text-white">
@@ -377,224 +514,25 @@
                 </div>
             </div>
             <div class="text-sm font-medium bg-brand-800 px-3 py-1 rounded-full">
-                Progres: <span id="progress-text">1</span> dari 6
+                Progres: <span id="progress-text">0</span> dari 6
             </div>
         </header>
-
-        <!-- Main Layout LKPD (Sidebar + Content) -->
-        <div class="flex flex-1 overflow-hidden flex-col md:flex-row">
-            
-            <!-- Sidebar: Alur Pembelajaran -->
-            <aside class="w-full md:w-64 bg-slate-50 border-r md:h-full shrink-0 flex flex-col">
-                <div class="p-4 bg-slate-100 border-b font-bold text-slate-700 text-sm tracking-wider">
-                    ALUR PEMBELAJARAN
-                </div>
-                <ul class="flex-1 overflow-y-auto p-4 space-y-2">
-                    <li class="p-2 rounded-lg bg-green-100 text-green-800 font-medium flex gap-2 items-center text-sm cursor-pointer border border-green-200">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        1. Stimulation
-                    </li>
-                    <li class="p-2 rounded-lg bg-white shadow-sm border-l-4 border-brand-500 font-medium flex gap-2 items-start text-sm cursor-pointer">
-                        <span class="text-brand-500 mt-0.5">●</span>
-                        <div>
-                            <span class="block">2. Problem Statement</span>
-                            <span class="text-xs font-normal text-slate-500 mt-1 block">Apa yang ingin kamu ketahui dari laporan penjualan minimarket?</span>
-                        </div>
-                    </li>
-                    <li class="p-2 rounded-lg hover:bg-slate-100 text-slate-600 flex gap-2 items-center text-sm cursor-pointer">
-                        <span class="text-slate-400">○</span> 3. Data Collection
-                    </li>
-                    <li class="p-2 rounded-lg hover:bg-slate-100 text-slate-600 flex gap-2 items-center text-sm cursor-pointer">
-                        <span class="text-slate-400">○</span> 4. Data Processing
-                    </li>
-                    <li class="p-2 rounded-lg hover:bg-slate-100 text-slate-600 flex gap-2 items-center text-sm cursor-pointer">
-                        <span class="text-slate-400">○</span> 5. Verification
-                    </li>
-                    <li class="p-2 rounded-lg hover:bg-slate-100 text-slate-600 flex gap-2 items-center text-sm cursor-pointer">
-                        <span class="text-slate-400">○</span> 6. Generalize
-                    </li>
-                </ul>
-            </aside>
-
-            <!-- Area Aktivitas & Tabs -->
-            <div class="flex-1 flex flex-col h-full bg-slate-100 relative">
-                
-                <!-- Konten Dinamis Area -->
-                <div class="flex-1 overflow-y-auto p-4 sm:p-6 pb-24">
-                    
-                    <!-- TAB 1: CORE (Tugas Inti) -->
-                    <div id="lkpd-core" class="lkpd-tab-content lkpd-tab-active max-w-4xl mx-auto space-y-4">
-                        <div class="bg-white rounded-lg p-5 shadow-sm border-l-4 border-blue-500">
-                            <h2 class="font-bold text-lg text-slate-800 uppercase">CORE | Tugas Inti</h2>
-                            <p class="text-sm text-slate-600">Aktivitas: Mengolah Data Penjualan</p>
-                        </div>
-
-                        <div class="bg-blue-50 rounded-lg p-4 border border-blue-100 text-sm">
-                            <span class="font-bold text-blue-800 block mb-1">PETUNJUK</span>
-                            <p class="text-blue-700">Buat tabel laporan penjualan dan gunakan lima formula untuk memperoleh informasi yang dibutuhkan. Anda bisa menggunakan file Spreadsheet Anda sendiri lalu menyalin hasilnya ke bawah.</p>
-                        </div>
-
-                        <div class="bg-white rounded-lg p-5 shadow-sm border overflow-x-auto">
-                            <h3 class="font-bold text-slate-700 mb-3 text-sm">DATA PENJUALAN</h3>
-                            <table class="w-full text-left border-collapse sheet-table text-sm min-w-[500px]">
-                                <thead class="bg-slate-100 text-slate-600">
-                                    <tr>
-                                        <th class="p-2 font-medium">Nama Produk</th>
-                                        <th class="p-2 font-medium">Harga_satuan</th>
-                                        <th class="p-2 font-medium">Jumlah_terjual</th>
-                                        <th class="p-2 font-medium">Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td class="p-2">Air mineral</td><td class="p-2">3000</td><td class="p-2">20</td><td class="p-1"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-slate-50 focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
-                                    <tr><td class="p-2 bg-slate-50">Minyak Goreng</td><td class="p-2 bg-slate-50">18000</td><td class="p-2 bg-slate-50">18</td><td class="p-1 bg-slate-50"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-white focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
-                                    <tr><td class="p-2">Susu UHT</td><td class="p-2">8000</td><td class="p-2">30</td><td class="p-1"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-slate-50 focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
-                                    <tr><td class="p-2 bg-slate-50">Gula Pasir</td><td class="p-2 bg-slate-50">17000</td><td class="p-2 bg-slate-50">15</td><td class="p-1 bg-slate-50"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-white focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
-                                    <tr><td class="p-2">Indomie</td><td class="p-2">3500</td><td class="p-2">60</td><td class="p-1"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-slate-50 focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
-                                    <tr><td class="p-2 bg-slate-50">Lays Potato</td><td class="p-2 bg-slate-50">13000</td><td class="p-2 bg-slate-50">15</td><td class="p-1 bg-slate-50"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-white focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
-                                    <tr><td class="p-2">Teh celup</td><td class="p-2">8000</td><td class="p-2">16</td><td class="p-1"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-slate-50 focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
-                                    <tr><td class="p-2 bg-slate-50">Luwak white coffee</td><td class="p-2 bg-slate-50">1500</td><td class="p-2 bg-slate-50">70</td><td class="p-1 bg-slate-50"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-white focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
-                                    <tr><td class="p-2">Sabun cair</td><td class="p-2">21000</td><td class="p-2">10</td><td class="p-1"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-slate-50 focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
-                                    <tr><td class="p-2 bg-slate-50">Roti</td><td class="p-2 bg-slate-50">5000</td><td class="p-2 bg-slate-50">8</td><td class="p-1 bg-slate-50"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-white focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="bg-white rounded-lg p-5 shadow-sm border">
-                            <h3 class="font-bold text-slate-700 mb-4 text-sm">EKSPLORASI FORMULA</h3>
-                            <div class="space-y-3 max-w-xl">
-                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
-                                    <label class="text-sm font-medium text-slate-600">Total penjualan:</label>
-                                    <input type="text" placeholder="[Formula]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500 font-mono">
-                                    <input type="text" placeholder="[Hasil]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500">
-                                </div>
-                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
-                                    <label class="text-sm font-medium text-slate-600">Rata-rata penjualan:</label>
-                                    <input type="text" placeholder="[Formula]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500 font-mono">
-                                    <input type="text" placeholder="[Hasil]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500">
-                                </div>
-                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
-                                    <label class="text-sm font-medium text-slate-600">Nilai tertinggi:</label>
-                                    <input type="text" placeholder="[Formula]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500 font-mono">
-                                    <input type="text" placeholder="[Hasil]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500">
-                                </div>
-                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
-                                    <label class="text-sm font-medium text-slate-600">Nilai terendah:</label>
-                                    <input type="text" placeholder="[Formula]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500 font-mono">
-                                    <input type="text" placeholder="[Hasil]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500">
-                                </div>
-                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
-                                    <label class="text-sm font-medium text-slate-600">Banyak data:</label>
-                                    <input type="text" placeholder="[Formula]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500 font-mono">
-                                    <input type="text" placeholder="[Hasil]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500">
-                                </div>
-                            </div>
-                            
-                            <div class="mt-6 flex flex-wrap gap-3">
-                                <button onclick="bukaSpreadsheet()" class="flex items-center gap-2 border border-green-600 text-green-700 hover:bg-green-50 px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                                    Buka Spreadsheet
-                                </button>
-                                <button onclick="simpanProgres()" class="flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path></svg>
-                                    Simpan Progres
-                                </button>
-                                <button id="btn-kirim-lkpd" onclick="kirimLkpd()" class="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-                                    <span>Kirim LKPD & Unduh PDF</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- TAB 2: SUPPORT (Bantuan) -->
-                    <div id="lkpd-support" class="lkpd-tab-content max-w-4xl mx-auto space-y-4">
-                        <div class="bg-white rounded-lg p-5 shadow-sm border-l-4 border-yellow-400">
-                            <h2 class="font-bold text-lg text-slate-800 uppercase">SUPPORT | Bantuan Belajar</h2>
-                            <p class="text-sm text-slate-600">Area bantuan jika Anda mengalami kesulitan.</p>
-                        </div>
-                        
-                        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-                            <h3 class="font-bold text-yellow-800 mb-2">Kesulitan menentukan formula?</h3>
-                            <p class="text-sm text-yellow-700 mb-6">Pilih salah satu bantuan di bawah ini untuk memandu Anda menyelesaikan Tugas Inti.</p>
-                            
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                                <button onclick="showToast('Hint 1: Untuk mencari Total, kalikan Harga dengan Jumlah', 'info')" class="bg-white border shadow-sm p-3 rounded-lg text-left hover:border-yellow-400 transition-colors">
-                                    <span class="block font-bold text-slate-700 text-sm">💡 Hint 1</span>
-                                    <span class="text-xs text-slate-500">Petunjuk Awal</span>
-                                </button>
-                                <button onclick="showToast('Hint 2: Gunakan fungsi SUM, AVERAGE, MIN, MAX, COUNT', 'info')" class="bg-white border shadow-sm p-3 rounded-lg text-left hover:border-yellow-400 transition-colors">
-                                    <span class="block font-bold text-slate-700 text-sm">🧩 Hint 2</span>
-                                    <span class="text-xs text-slate-500">Petunjuk Fungsi</span>
-                                </button>
-                                <button onclick="showToast('Contoh: Total Air Mineral = 3000 * 20 = 60000', 'info')" class="bg-white border shadow-sm p-3 rounded-lg text-left hover:border-yellow-400 transition-colors">
-                                    <span class="block font-bold text-slate-700 text-sm">📝 Contoh</span>
-                                    <span class="text-xs text-slate-500">Contoh Penyelesaian</span>
-                                </button>
-                                <button onclick="showToast('Latihan Terbimbing belum tersedia.', 'warning')" class="bg-white border shadow-sm p-3 rounded-lg text-left hover:border-yellow-400 transition-colors">
-                                    <span class="block font-bold text-slate-700 text-sm">🎯 Latihan</span>
-                                    <span class="text-xs text-slate-500">Latihan Terbimbing</span>
-                                </button>
-                            </div>
-                            
-                            <p class="text-sm text-yellow-800 mb-3">Setelah selesai mempelajari bantuan, silakan kembali ke tugas Core.</p>
-                            <button onclick="switchLkpdTab('core')" class="bg-yellow-100 hover:bg-yellow-200 text-yellow-800 px-4 py-2 rounded font-medium text-sm transition-colors flex items-center gap-2">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                                Kembali ke Core
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- TAB 3: CHALLENGE (Tantangan) -->
-                    <div id="lkpd-challenge" class="lkpd-tab-content max-w-4xl mx-auto space-y-4">
-                        <div class="bg-white rounded-lg p-5 shadow-sm border-l-4 border-purple-500">
-                            <h2 class="font-bold text-lg text-slate-800 uppercase">CHALLENGE | Analisis Lanjutan</h2>
-                            <p class="text-sm text-slate-600">Ruang eksplorasi lanjutan untuk siswa yang ingin tantangan ekstra.</p>
-                        </div>
-
-                        <div class="bg-purple-50 border border-purple-200 rounded-lg p-6">
-                            <h3 class="font-bold text-purple-800 mb-2">MISI: MENJADI ANALIS PENJUALAN</h3>
-                            <p class="text-sm text-purple-700 mb-6">Pemilik minimarket ingin memahami kondisi penjualannya sebelum menentukan tindak lanjut.</p>
-                            
-                            <div class="space-y-4 mb-6">
-                                <div class="bg-white p-4 rounded-lg shadow-sm border border-purple-100">
-                                    <h4 class="font-bold text-slate-700 text-sm mb-1">MISI 1</h4>
-                                    <p class="text-sm text-slate-600">Bandingkan nilai penjualan tertinggi dengan jumlah unit yang terjual. Apakah produk paling mahal menghasilkan total paling tinggi?</p>
-                                </div>
-                                <div class="bg-white p-4 rounded-lg shadow-sm border border-purple-100">
-                                    <h4 class="font-bold text-slate-700 text-sm mb-1">MISI 2</h4>
-                                    <p class="text-sm text-slate-600">Analisis produk mana yang penjualannya berada di bawah rata-rata (AVERAGE) penjualan keseluruhan.</p>
-                                </div>
-                                <div class="bg-white p-4 rounded-lg shadow-sm border border-purple-100">
-                                    <h4 class="font-bold text-slate-700 text-sm mb-1">MISI 3</h4>
-                                    <p class="text-sm text-slate-600">Susun rekomendasi tindakan untuk pemilik toko (misal: diskon, restock, dll) berdasarkan data terendah (MIN) dan tertinggi (MAX).</p>
-                                </div>
-                                <div class="bg-white p-4 rounded-lg shadow-sm border border-purple-100">
-                                    <h4 class="font-bold text-slate-700 text-sm mb-1">MISI 4</h4>
-                                    <p class="text-sm text-slate-600">Buatlah laporan sederhana berisi satu buah diagram batang penjualan dan kesimpulan analisis Anda di Spreadsheet.</p>
-                                </div>
-                            </div>
-                            
-                            <button onclick="showToast('Challenge Dimulai! Silakan kerjakan di Spreadsheet Anda.', 'success')" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2.5 rounded-lg font-medium text-sm transition-colors shadow-sm">
-                                Mulai Challenge
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Navigasi Bawah LKPD (Tabs) -->
-                <div class="absolute bottom-0 left-0 right-0 bg-white border-t shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] flex">
-                    <button id="tab-btn-core" onclick="switchLkpdTab('core')" class="flex-1 py-4 text-center font-bold text-sm text-brand-600 border-t-2 border-brand-600 bg-brand-50 transition-colors">
-                        CORE <span class="hidden sm:inline">| Tugas Inti</span>
-                    </button>
-                    <button id="tab-btn-support" onclick="switchLkpdTab('support')" class="flex-1 py-4 text-center font-bold text-sm text-slate-500 border-t-2 border-transparent hover:bg-slate-50 transition-colors">
-                        SUPPORT <span class="hidden sm:inline">| Bantuan</span>
-                    </button>
-                    <button id="tab-btn-challenge" onclick="switchLkpdTab('challenge')" class="flex-1 py-4 text-center font-bold text-sm text-slate-500 border-t-2 border-transparent hover:bg-slate-50 transition-colors">
-                        CHALLENGE <span class="hidden sm:inline">| Lanjutan</span>
-                    </button>
-                </div>
-            </div>
+        <div id="lkpd-scroll" class="flex-1 overflow-y-auto">
+        <div class="app">
+<section class="hero"><div class="eyebrow">Lembar Kerja Peserta Didik Digital</div><h1>Spreadsheet Ceria:<br>Jelajahi Data Penjualan!</h1><p>Temukan cara mengolah data penjualan minimarket dengan rumus spreadsheet. Amati, bereksperimen, periksa hasil, lalu gunakan data untuk membuat keputusan.</p><div class="hero-bottom"><button class="btn btn-primary" onclick="goStage(0)">Mulai eksplorasi&nbsp; →</button><span class="progress-text" id="heroProgress">0 dari 6 tahap selesai</span></div></section>
+<div class="layout"><aside class="sidebar">
+<div class="panel"><div class="student-card"><div class="avatar">👩‍💻</div><div><b id="lkpd-student-name">Petualang Data</b><span id="lkpd-student-class">LKPD · Minimarket Ceria</span></div></div></div>
+<div class="panel"><div class="side-label">Jalur Discovery Learning</div><nav class="stage-list" id="stageList"></nav><div class="scc-box"><div class="side-label">Dukungan belajar SCC</div><p>Mulai dari tugas inti. Buka bantuan bila perlu, atau lanjutkan tantangan saat siap.</p><div class="scc-chips"><span class="chip core">CORE · Inti</span><span class="chip support">SUPPORT · Bantuan</span><span class="chip challenge">CHALLENGE · Tantangan</span></div></div></div>
+<div class="panel"><div class="side-label">Aksi LKPD</div><div class="side-actions">
+<button class="btn btn-light btn-small" onclick="bukaSpreadsheet()">Buka Spreadsheet</button>
+<button class="btn btn-light btn-small" onclick="simpanProgres()">Simpan Progres</button>
+<button class="btn btn-dark btn-small js-kirim-lkpd" onclick="kirimLkpd()">Kirim LKPD &amp; Unduh PDF</button>
+</div></div>
+<div class="panel"><div class="side-label">Tujuan Pembelajaran</div><p style="font-size:12px;line-height:1.55;margin:0 0 10px">1. Membuat tabel laporan penjualan dan mengolah data dengan SUM, AVERAGE, MIN, MAX, dan COUNT secara akurat.</p><p style="font-size:12px;line-height:1.55;margin:0">2. Menganalisis hasil pengolahan data laporan penjualan minimarket.</p></div>
+</aside>
+<main class="main" id="mainContent"></main></div>
+<div class="footer">LKPD Digital · Informatika Kelas X · Discovery Learning terintegrasi SCC</div>
+        </div>
         </div>
     </div>
 
@@ -760,33 +698,6 @@
             navigateTo('view-menu');
         }
 
-        // --- HANDLER TAB LKPD ---
-        function switchLkpdTab(tabName) {
-            // Sembunyikan semua konten tab
-            document.querySelectorAll('.lkpd-tab-content').forEach(el => {
-                el.classList.remove('lkpd-tab-active');
-            });
-            
-            // Reset style tombol tab
-            const tabs = ['core', 'support', 'challenge'];
-            tabs.forEach(t => {
-                const btn = document.getElementById(`tab-btn-${t}`);
-                btn.className = 'flex-1 py-4 text-center font-bold text-sm text-slate-500 border-t-2 border-transparent hover:bg-slate-50 transition-colors';
-            });
-
-            // Aktifkan konten & style tab yang dipilih
-            document.getElementById(`lkpd-${tabName}`).classList.add('lkpd-tab-active');
-            
-            const activeBtn = document.getElementById(`tab-btn-${tabName}`);
-            let themeColor = 'brand-600'; // Default Core
-            let themeBg = 'brand-50';
-            
-            if(tabName === 'support') { themeColor = 'yellow-600'; themeBg = 'yellow-50'; }
-            if(tabName === 'challenge') { themeColor = 'purple-600'; themeBg = 'purple-50'; }
-            
-            activeBtn.className = `flex-1 py-4 text-center font-bold text-sm text-${themeColor} border-t-2 border-${themeColor} bg-${themeBg} transition-colors`;
-        }
-
         // =====================================================
         // KONFIGURASI  (edit bagian ini)
         // =====================================================
@@ -846,99 +757,124 @@
             setTimeout(() => navigateTo('view-menu'), 1800);
         }
 
-        // --- LKPD ---
-        function ambilDataLkpd() {
-            const baris = [...document.querySelectorAll('#lkpd-core tbody tr')].map(tr => {
-                const td = tr.querySelectorAll('td');
-                return [td[0].innerText.trim(), td[1].innerText.trim(), td[2].innerText.trim(), td[3].querySelector('input').value.trim()];
-            });
-            const formula = [...document.querySelectorAll('#lkpd-core .grid')].map(g => {
-                const inp = g.querySelectorAll('input');
-                return [g.querySelector('label').innerText.replace(':', '').trim(), inp[0].value.trim(), inp[1].value.trim()];
-            });
-            return { baris, formula };
-        }
-
-        function buatPdfLkpd(data) {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            const tgl = new Date().toLocaleString('id-ID');
-            doc.setFontSize(16); doc.text('LKPD - Pengolahan Angka', 14, 18);
-            doc.setFontSize(11);
-            doc.text(`Nama   : ${currentUser.nama}`, 14, 28);
-            doc.text(`Kelas  : ${currentUser.kelas}`, 14, 34);
-            doc.text(`Waktu  : ${tgl}`, 14, 40);
-
-            doc.autoTable({
-                startY: 48,
-                head: [['Nama Produk', 'Harga Satuan', 'Jumlah Terjual', 'Total (jawaban siswa)']],
-                body: data.baris.map(r => r.map(c => c || '-')),
-                headStyles: { fillColor: [37, 99, 235] }
-            });
-
-            doc.setFontSize(12);
-            doc.text('Eksplorasi Formula', 14, doc.lastAutoTable.finalY + 12);
-            doc.autoTable({
-                startY: doc.lastAutoTable.finalY + 16,
-                head: [['Keterangan', 'Formula', 'Hasil']],
-                body: data.formula.map(r => r.map(c => c || '-')),
-                headStyles: { fillColor: [37, 99, 235] }
-            });
-            return doc;
-        }
-
-        async function kirimLkpd() {
-            const data = ambilDataLkpd();
-            const semuaKosong = data.baris.every(r => r[3] === '') && data.formula.every(f => f[1] === '' && f[2] === '');
-            if (semuaKosong) { showToast('LKPD masih kosong. Isi dulu sebelum dikirim.', 'warning'); return; }
-
-            const btn = document.getElementById('btn-kirim-lkpd');
-            btn.disabled = true; btn.querySelector('span').innerText = 'Mengirim...';
-
-            const doc = buatPdfLkpd(data);
-            const namaFile = `LKPD_${currentUser.kelas}_${currentUser.nama}`.replace(/[^\w\-]+/g, '_') + '.pdf';
-            doc.save(namaFile);   // siswa langsung mengunduh PDF-nya
-
-            const pdfBase64 = doc.output('datauristring').split(',').pop();
-            const res = await kirimKeSheet({
-                tipe: 'lkpd', nama: currentUser.nama, kelas: currentUser.kelas,
-                namaFile, pdfBase64, data
-            });
-
-            btn.disabled = false; btn.querySelector('span').innerText = 'Kirim LKPD & Unduh PDF';
-            if (res.ok) showToast('LKPD terkirim ke guru & PDF terunduh!', 'success');
-            else showToast('PDF terunduh, tetapi gagal terkirim: ' + res.error, 'error');
-        }
-
-        // --- Draft progres LKPD (tersimpan di perangkat siswa) ---
-        function kunciDraft() { return `lkpd_draft_${currentUser.kelas}_${currentUser.nama}`; }
-
-        function simpanProgres() {
-            try {
-                localStorage.setItem(kunciDraft(), JSON.stringify(ambilDataLkpd()));
-                showToast('Progres LKPD disimpan di perangkat ini.', 'success');
-            } catch (e) { showToast('Progres tidak dapat disimpan.', 'error'); }
-        }
-
-        function pulihkanDraft() {
-            try {
-                const raw = localStorage.getItem(kunciDraft());
-                if (!raw) return;
-                const d = JSON.parse(raw);
-                document.querySelectorAll('#lkpd-core tbody tr').forEach((tr, i) => {
-                    if (d.baris[i]) tr.querySelectorAll('td')[3].querySelector('input').value = d.baris[i][3];
-                });
-                document.querySelectorAll('#lkpd-core .grid').forEach((g, i) => {
-                    const inp = g.querySelectorAll('input');
-                    if (d.formula[i]) { inp[0].value = d.formula[i][1]; inp[1].value = d.formula[i][2]; }
-                });
-            } catch (e) { /* abaikan */ }
-        }
-
         function bukaSpreadsheet() {
             showToast('Membuka Google Sheets...', 'info');
             window.open('https://sheets.new', '_blank');
         }
+    </script>
+    <!-- SCRIPT HALAMAN LKPD -->
+    <script>
+(function(){
+const stages=[['Stimulation','Pemberian Rangsangan','Amati data dan temukan pertanyaan'],['Problem Statement','Identifikasi Masalah','Susun pertanyaan dan dugaan awal'],['Data Collection','Pengumpulan Data','Buat tabel dan coba rumus'],['Data Processing','Pengolahan Data','Hitung dan analisis hasil'],['Verification','Pembuktian','Periksa ketepatan hasil'],['Generalization','Menarik Kesimpulan','Simpulkan dan refleksikan']];
+const products=[['Air mineral',20,3000],['Roti',15,5000],['Susu',10,8000],['Mi instan',25,3500],['Biskuit',12,7000],['Teh kemasan',18,4000],['Sabun',8,6500],['Kopi',14,9000],['Gula',9,7500],['Minyak goreng',7,16000]];
+const sales=products.map(p=>p[1]*p[2]);const sum=sales.reduce((a,b)=>a+b,0);const avg=sum/sales.length;const min=Math.min(...sales);const max=Math.max(...sales);let current=0;let lastStage=0;let done=new Set();let answers={};
+const rupiah=n=>'Rp'+Number(n).toLocaleString('id-ID');
+function tableHTML(){return `<div class="table-wrap"><table class="data-table"><thead><tr><th>Produk</th><th>Jumlah Terjual</th><th>Harga Satuan</th><th>Total Penjualan</th></tr></thead><tbody>${products.map((p,i)=>`<tr><td>${p[0]}</td><td class="number">${p[1]}</td><td class="number">${rupiah(p[2])}</td><td class="number">${rupiah(sales[i])}</td></tr>`).join('')}</tbody></table></div>`}
+function stageNav(){document.getElementById('stageList').innerHTML=stages.map((s,i)=>`<button class="stage-btn ${i===current?'active':''} ${done.has(i)?'done':''}" onclick="goStage(${i})"><span class="stage-num">${done.has(i)?'✓':i+1}</span><span class="stage-copy"><b>${s[0]}</b><small>${s[1]}</small></span></button>`).join('')+`<div class="side-label" style="margin:12px 0 4px;grid-column:1/-1">Menu tambahan</div><button class="stage-btn challenge-btn ${current===6?'active':''}" style="grid-column:1/-1" onclick="goChallenge()"><span class="stage-num">🚀</span><span class="stage-copy"><b>Challenge</b><small>Analisis lanjutan</small></span></button>`;progressUI();studentUI()}
+function progressUI(){document.getElementById('heroProgress').textContent=`${done.size} dari 6 tahap selesai`;const p=document.getElementById('progress-text');if(p)p.textContent=done.size}
+function studentUI(){const n=document.getElementById('lkpd-student-name'),c=document.getElementById('lkpd-student-class');if(n&&currentUser.nama){n.textContent=currentUser.nama;c.textContent='Kelas '+currentUser.kelas+' · Minimarket Ceria'}}
+function goStage(i){saveAll();current=Math.max(0,Math.min(5,i));lastStage=current;render();document.getElementById('lkpd-scroll').scrollTo({top:0,behavior:'smooth'})}
+function goChallenge(){saveAll();current=6;render();document.getElementById('lkpd-scroll').scrollTo({top:0,behavior:'smooth'})}
+function mulaiChallenge(){toast('Challenge dimulai! Silakan kerjakan di Spreadsheet kamu.','success')}
+function markDone(){done.add(current);stageNav();toast('Tahap ditandai selesai. Lanjutkan eksplorasi!')}
+function navButtons(){return `<div class="nav-bottom"><button class="btn btn-light" ${current===0?'disabled':''} onclick="goStage(${current-1})">← Sebelumnya</button><button class="btn btn-dark" onclick="markDone();${current<5?`goStage(${current+1})`:'showSummary()'}">${current===5?'Selesaikan LKPD':'Tandai selesai & lanjut →'}</button></div>`}
+function tableCard(){return `<div class="content-card"><div class="section-row"><div><h3>Dataset: Minimarket Ceria</h3><p>Data penjualan harian untuk 10 produk</p></div><span class="chip core">DATA AWAL</span></div>${tableHTML()}<div class="notice">💡 <b>Perhatikan:</b> kolom total penjualan diperoleh dari jumlah terjual × harga satuan. Pada tahap pengumpulan data, kamu akan membuat tabel ini di aplikasi spreadsheet.</div></div>`}
+function sccCore(){return `<div class="callout"><div class="symbol">🎯</div><div><b>CORE · Tugas inti untuk semua murid</b><p>Gunakan dataset untuk membuat laporan penjualan di spreadsheet, menerapkan lima fungsi, dan menjawab pertanyaan berdasarkan hasil.</p></div></div>`}
+function supportBox(){return `<details class="support-panel"><summary>🧩 SUPPORT · Buka bantuan langkah demi langkah</summary><p><b>Langkah 1 — Hitung total per produk</b><br>Jika jumlah terjual berada di kolom B dan harga satuan di kolom C, ketik <code>=B2*C2</code> pada sel total penjualan baris pertama. Salin rumus ke baris berikutnya.</p><p><b>Langkah 2 — Gunakan fungsi</b></p><ul><li><code>=SUM(D2:D11)</code> menjumlahkan nilai.</li><li><code>=AVERAGE(D2:D11)</code> menghitung rata-rata.</li><li><code>=MIN(D2:D11)</code> mencari nilai terkecil.</li><li><code>=MAX(D2:D11)</code> mencari nilai terbesar.</li><li><code>=COUNT(D2:D11)</code> menghitung banyak sel berisi angka.</li></ul><p><b>Langkah 3 — Periksa rentang</b><br>Pastikan rentang dimulai dari baris produk pertama dan berakhir di baris produk terakhir, tidak termasuk judul atau baris total.</p><div class="notice">Latihan terbimbing: jika nilai penjualan ada pada E2 sampai E11, tuliskan fungsi untuk mencari nilai tertinggi.</div><div class="field"><label for="guidedFormula">Rumus MAX yang kamu gunakan</label><input id="guidedFormula" placeholder="Contoh: =MAX(E2:E11)"></div><button class="btn btn-small btn-light" onclick="checkGuided()">Periksa rumus</button><div class="feedback" id="guidedFeedback"></div><p><b>Setelah latihan:</b> kembali ke tugas CORE dan selesaikan lima fungsi secara mandiri.</p></details>`}
+function challengeBox(){return `<div class="callout"><div class="symbol">🚀</div><div><b>CHALLENGE · Siap menganalisis lebih dalam?</b><p>Buka menu Challenge untuk misi analis penjualan tingkat lanjut.</p><p><button class="btn btn-small btn-light" onclick="goChallenge()">Buka menu Challenge</button></p></div></div>`}
+function render(){stageNav();let html='';const heading=`<div class="stage-head"><div><div class="stage-kicker">Tahap ${current+1} dari 6 · Discovery Learning</div><h2>${(stages[current]||[])[1]}</h2><p>${(stages[current]||[])[2]}</p></div><span class="stage-tag">${done.has(current)?'✓ Selesai':'Dalam proses'}</span></div>`;
+if(current===0){html=heading+`<div class="content-card"><div class="section-row"><div><h3>Situasi pemantik</h3><p>Bayangkan kamu menjadi tim analis di Minimarket Ceria.</p></div><span class="chip core">CORE · AMATI</span></div><div class="prompt">Pemilik minimarket memiliki catatan penjualan 10 produk. Ia ingin mengetahui berapa total pendapatan, rata-rata penjualan tiap produk, produk dengan nilai penjualan tertinggi dan terendah, serta jumlah produk yang tercatat. Bagaimana cara memperoleh informasi itu secara cepat dan akurat?</div><div class="mini-stat-grid"><div class="mini-stat"><span>Jumlah produk</span><b>10 item</b></div><div class="mini-stat"><span>Kolom yang diamati</span><b>Jumlah · Harga</b></div><div class="mini-stat"><span>Alat bantu</span><b>Spreadsheet</b></div></div><h3>Amati data berikut</h3><p class="muted">Belum perlu menghitung semuanya. Perhatikan pola data dan pikirkan informasi yang ingin diketahui pemilik.</p>${tableHTML()}<div class="question-grid"><div class="question-card"><div class="q-icon">🧮</div><b>Bagaimana mengetahui total penjualan?</b><p>Apakah perlu menjumlahkan satu per satu?</p></div><div class="question-card"><div class="q-icon">📊</div><b>Bagaimana membandingkan produk?</b><p>Bagaimana menemukan nilai tertinggi dan terendah?</p></div></div><div class="field"><label>Apa yang membuat spreadsheet berguna untuk tugas ini?</label><textarea id="observation" placeholder="Menurut kelompok kami, spreadsheet membantu karena…">${esc(answers.observation||'')}</textarea></div><button class="btn btn-small btn-light" onclick="saveField('observation')">Simpan pengamatan</button></div>${navButtons()}`}
+if(current===1){html=heading+`<div class="content-card"><div class="section-row"><div><h3>Rumuskan masalah dan dugaan awal</h3><p>Diskusikan sebelum mencoba fungsi spreadsheet.</p></div><span class="chip core">CORE · WAJIB</span></div><div class="prompt">Tuliskan pertanyaan yang perlu dijawab untuk membantu pemilik minimarket mengambil keputusan. Lalu buat dugaan awal tentang fungsi yang mungkin digunakan.</div><div class="answer-grid"><div class="answer-box"><div class="field"><label>1. Pertanyaan tentang total penjualan</label><textarea id="qTotal" placeholder="Bagaimana cara…">${esc(answers.qTotal||'')}</textarea></div><div class="field"><label>2. Pertanyaan tentang rata-rata</label><textarea id="qAvg" placeholder="Berapa… atau bagaimana…">${esc(answers.qAvg||'')}</textarea></div></div><div class="answer-box"><div class="field"><label>3. Pertanyaan tentang nilai tertinggi/terendah</label><textarea id="qMinMax" placeholder="Produk mana…">${esc(answers.qMinMax||'')}</textarea></div><div class="field"><label>Dugaan awal: fungsi apa yang dibutuhkan?</label><textarea id="hypothesis" placeholder="Kami menduga fungsi … digunakan untuk…">${esc(answers.hypothesis||'')}</textarea></div></div></div>${sccCore()}${supportBox()}${navButtons()}</div>`}
+if(current===2){html=heading+`<div class="content-card"><div class="section-row"><div><h3>CORE · Bangun laporan penjualan</h3><p>Gunakan Excel atau Google Sheets pada perangkat kelompok.</p></div><span class="chip core">PRAKTIK</span></div><ol style="line-height:1.8;padding-left:22px"><li>Buat judul <b>Laporan Penjualan Minimarket Ceria</b>.</li><li>Buat kolom: Produk, Jumlah Terjual, Harga Satuan, Total Penjualan.</li><li>Masukkan seluruh data pada tabel sumber di bawah.</li><li>Hitung total tiap produk dengan mengalikan jumlah terjual dan harga satuan.</li><li>Di bagian ringkasan, siapkan tempat untuk lima fungsi: SUM, AVERAGE, MIN, MAX, dan COUNT.</li></ol>${tableHTML()}<div class="notice">📌 <b>Catatan kolom:</b> bila kolom Total Penjualan ada di E dan data berada pada baris 2–11, gunakan rentang <code>E2:E11</code> untuk fungsi ringkasan.</div><div class="field"><label>Nama aplikasi yang digunakan</label><select id="appUsed"><option ${answers.appUsed==='Microsoft Excel'?'selected':''}>Microsoft Excel</option><option ${answers.appUsed==='Google Sheets'?'selected':''}>Google Sheets</option><option ${answers.appUsed==='Aplikasi spreadsheet lain'?'selected':''}>Aplikasi spreadsheet lain</option></select></div><div class="field"><label>Catatan percobaan kelompok</label><textarea id="experimentNote" placeholder="Kami membuat tabel dengan… Kendala yang muncul…">${esc(answers.experimentNote||'')}</textarea></div><button class="btn btn-small btn-light" onclick="saveField('appUsed');saveField('experimentNote')">Simpan catatan praktik</button>${supportBox()}<div class="callout"><div class="symbol">🔗</div><div><b>Area kerja spreadsheet</b><p>Prototipe ini menyediakan panduan dan pemeriksaan rumus. Buka aplikasi spreadsheet di perangkatmu untuk membuat tabel dan memasukkan formula.</p><p><button class="btn btn-small btn-light" onclick="bukaSpreadsheet()">Buka Spreadsheet</button></p></div></div>${navButtons()}</div>`}
+if(current===3){html=heading+`<div class="content-card"><div class="section-row"><div><h3>CORE · Olah data dengan lima fungsi</h3><p>Masukkan rumus yang digunakan di spreadsheet, lalu cocokkan dengan hasil yang kamu peroleh.</p></div><span class="chip core">WAJIB</span></div>${tableHTML()}<div class="formula-list">${[['SUM','Total seluruh penjualan','=SUM(E2:E11)',sum],['AVERAGE','Rata-rata penjualan','=AVERAGE(E2:E11)',avg],['MIN','Penjualan terendah','=MIN(E2:E11)',min],['MAX','Penjualan tertinggi','=MAX(E2:E11)',max],['COUNT','Banyak data angka','=COUNT(E2:E11)',10]].map((f,i)=>`<div class="formula-card"><label>${f[0]} · ${f[1]}</label><div class="field"><input id="formula${i}" placeholder="Masukkan rumus spreadsheet" value="${esc(answers['formula'+i]||'')}"></div><div class="field"><input id="result${i}" placeholder="Hasil dari spreadsheet" value="${esc(answers['result'+i]||'')}"></div><div class="feedback" id="feedback${i}">Target hasil: ${i===4?'10 sel angka':rupiah(f[3])}</div></div>`).join('')}</div><div class="inline-actions"><button class="btn btn-dark" onclick="checkFormulas()">Periksa rumus & hasil</button><button class="btn btn-light" onclick="fillExamples()">Lihat contoh rumus</button></div><p class="status-note">Pemeriksaan ini membantu mengecek penulisan formula dan angka hasil. Format mata uang boleh menggunakan pemisah ribuan.</p>${supportBox()}${challengeBox()}${navButtons()}</div>`}
+if(current===4){html=heading+`<div class="content-card"><div class="section-row"><div><h3>Verifikasi hasil dan interpretasi</h3><p>Periksa kembali rumus, rentang sel, dan kesesuaian kesimpulan dengan data.</p></div><span class="chip core">CEK BUKTI</span></div><div class="mini-stat-grid"><div class="mini-stat"><span>SUM · Total penjualan</span><b>${rupiah(sum)}</b></div><div class="mini-stat"><span>AVERAGE · Rata-rata per produk</span><b>${rupiah(avg)}</b></div><div class="mini-stat"><span>COUNT · Data numerik</span><b>10</b></div></div><div class="notice">Nilai pembanding dari dataset contoh. Jika hasilmu berbeda, cek formula total per produk, rentang data, dan apakah ada angka yang tersimpan sebagai teks.</div><div class="field"><label>Bagaimana kelompok memastikan hasilnya benar?</label><textarea id="verification" placeholder="Kami memeriksa hasil dengan cara…">${esc(answers.verification||'')}</textarea></div><div class="field"><label>Produk dengan penjualan tertinggi dan terendah</label><textarea id="extremes" placeholder="Tertinggi adalah… karena…; terendah adalah…">${esc(answers.extremes||'')}</textarea></div><div class="field"><label>Apakah jumlah terjual terbanyak selalu berarti total penjualan tertinggi? Jelaskan dengan bukti data.</label><textarea id="compare" placeholder="Menurut data…">${esc(answers.compare||'')}</textarea></div>${challengeBox()}${navButtons()}</div>`}
+if(current===5){html=heading+`<div class="content-card"><div class="section-row"><div><h3>Generalisasi · Tarik kesimpulan</h3><p>Jelaskan apa yang kamu pelajari dan bagaimana hasilnya berguna dalam situasi nyata.</p></div><span class="chip core">REFLEKSI</span></div><div class="question-grid"><div class="question-card"><b>SUM dan AVERAGE</b><p>SUM menjumlahkan seluruh nilai; AVERAGE menghitung nilai rata-rata.</p></div><div class="question-card"><b>MIN dan MAX</b><p>MIN menemukan nilai terendah; MAX menemukan nilai tertinggi.</p></div><div class="question-card"><b>COUNT</b><p>COUNT menghitung banyak sel yang berisi angka.</p></div><div class="question-card"><b>Analisis data</b><p>Angka menjadi bermakna saat digunakan untuk menjelaskan pola dan mendukung keputusan.</p></div></div><div class="field"><label>Kesimpulan kelompok tentang penggunaan fungsi spreadsheet</label><textarea id="conclusion" placeholder="Dari kegiatan ini kami menyimpulkan bahwa…">${esc(answers.conclusion||'')}</textarea></div><div class="field"><label>Refleksi individu: hal yang sudah dikuasai</label><textarea id="reflection" placeholder="Saya sudah bisa…">${esc(answers.reflection||'')}</textarea></div><div class="field"><label>Hal yang masih perlu dilatih atau ditanyakan</label><textarea id="nextStep" placeholder="Saya ingin berlatih…">${esc(answers.nextStep||'')}</textarea></div><div class="callout"><div class="symbol">🌟</div><div><b>Sudah siap? Periksa kembali sebelum mengumpulkan.</b><p>Pastikan tabel selesai, lima fungsi sudah dicoba, hasil sudah diverifikasi, dan analisis disertai bukti angka.</p></div></div><div class="inline-actions"><button class="btn btn-dark" onclick="saveAll();showSummary()">Simpan jawaban & lihat ringkasan</button><button class="btn btn-light js-kirim-lkpd" onclick="kirimLkpd()">Kirim LKPD &amp; Unduh PDF</button></div><div id="summary" class="notice hidden"></div><h3 style="margin-top:24px">Kriteria keberhasilan</h3><table class="rubric"><thead><tr><th>Aspek</th><th>Indikator</th><th>Target</th></tr></thead><tbody><tr><td>TP 1 · Keterampilan</td><td>Tabel laporan dan lima formula akurat</td><td>Mandiri / dengan bantuan seperlunya</td></tr><tr><td>TP 2 · Analisis</td><td>Interpretasi hasil dan kesimpulan didukung data</td><td>Alasan jelas dan berbasis angka</td></tr><tr><td>Proses</td><td>Diskusi, percobaan, verifikasi, refleksi</td><td>Kontribusi aktif dalam kelompok</td></tr></tbody></table></div>${navButtons()}`}
+if(current===6){html=`<div class="stage-head"><div><div class="stage-kicker">Menu tambahan · Analisis lanjutan</div><h2>CHALLENGE | Analisis Lanjutan</h2><p>Ruang eksplorasi lanjutan untuk murid yang ingin tantangan ekstra.</p></div><span class="stage-tag">Opsional</span></div><div class="content-card"><div class="section-row"><div><h3>Misi: Menjadi Analis Penjualan</h3><p>Pemilik minimarket ingin memahami kondisi penjualannya sebelum menentukan tindak lanjut.</p></div><span class="chip challenge">CHALLENGE</span></div>${tableHTML()}<div class="question-grid"><div class="question-card"><b>MISI 1</b><p>Bandingkan nilai penjualan tertinggi dengan jumlah unit yang terjual. Apakah produk paling mahal menghasilkan total paling tinggi?</p></div><div class="question-card"><b>MISI 2</b><p>Analisis produk mana yang penjualannya berada di bawah rata-rata (AVERAGE) penjualan keseluruhan.</p></div><div class="question-card"><b>MISI 3</b><p>Susun rekomendasi tindakan untuk pemilik toko (misal: diskon, restock, dll) berdasarkan data terendah (MIN) dan tertinggi (MAX).</p></div><div class="question-card"><b>MISI 4</b><p>Buatlah laporan sederhana berisi satu buah diagram batang penjualan dan kesimpulan analisis kamu di Spreadsheet.</p></div></div><div class="field"><label>Analisis dan rekomendasi</label><textarea id="challengeAnswer" placeholder="Berdasarkan data, saya menemukan bahwa… Bukti angkanya… Karena itu, saya merekomendasikan…">${esc(answers.challengeAnswer||'')}</textarea></div><div class="inline-actions"><button class="btn btn-dark" onclick="mulaiChallenge()">Mulai Challenge</button><button class="btn btn-light" onclick="bukaSpreadsheet()">Buka Spreadsheet</button><button class="btn btn-light" onclick="saveField('challengeAnswer')">Simpan jawaban</button><button class="btn btn-light js-kirim-lkpd" onclick="kirimLkpd()">Kirim LKPD &amp; Unduh PDF</button></div><div class="nav-bottom"><button class="btn btn-light" onclick="goStage(lastStage)">← Kembali ke tahap LKPD</button></div></div>`}
+document.getElementById('mainContent').innerHTML=html;}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function saveField(id){const el=document.getElementById(id);if(el)answers[id]=el.value;toast('Jawaban disimpan.','success')}
+function saveAll(){document.querySelectorAll('#mainContent input[id],#mainContent textarea[id],#mainContent select[id]').forEach(el=>answers[el.id]=el.value)}
+function checkGuided(){const v=(document.getElementById('guidedFormula').value||'').replace(/\s/g,'').toUpperCase();const el=document.getElementById('guidedFeedback');el.textContent=v==='=MAX(E2:E11)'?'Tepat! Rentang E2:E11 mencakup 10 data penjualan. Kembali ke CORE dan coba fungsi lainnya.':'Coba lagi. Gunakan MAX dan rentang yang memuat semua nilai penjualan, tanpa judul kolom.';el.className='feedback '+(v==='=MAX(E2:E11)'?'good':'bad')}
+function checkFormulas(){const expected=[['=SUM(E2:E11)',sum],['=AVERAGE(E2:E11)',avg],['=MIN(E2:E11)',min],['=MAX(E2:E11)',max],['=COUNT(E2:E11)',10]];let correct=0;expected.forEach((e,i)=>{const f=document.getElementById('formula'+i),r=document.getElementById('result'+i),fb=document.getElementById('feedback'+i);answers['formula'+i]=f.value;answers['result'+i]=r.value;const norm=f.value.replace(/\s/g,'').toUpperCase();const num=Number(String(r.value).replace(/[^\d,.-]/g,'').replace(/\./g,'').replace(',','.'));const okFormula=norm===e[0];const okResult=Number.isFinite(num)&&Math.abs(num-e[1])<.01;const ok=okFormula&&okResult;if(ok)correct++;fb.textContent=ok?'Benar: formula dan hasil sesuai.':`Periksa kembali. Rumus yang diharapkan ${e[0]} dan hasil ${i===4?'10':rupiah(e[1])}.`;fb.className='feedback '+(ok?'good':'bad')});toast(`${correct} dari 5 fungsi diperiksa benar.`)}
+function fillExamples(){const ex=['=SUM(E2:E11)','=AVERAGE(E2:E11)','=MIN(E2:E11)','=MAX(E2:E11)','=COUNT(E2:E11)'];ex.forEach((v,i)=>{const el=document.getElementById('formula'+i);if(el)el.value=v});toast('Contoh rumus ditampilkan. Coba pahami lalu sesuaikan dengan lembar kerjamu.')}
+function showSummary(){saveAll();const el=document.getElementById('summary');if(el){el.classList.remove('hidden');el.innerHTML=`<b>Ringkasan progres</b><br>Tahap selesai: ${done.size}/6<br>Jawaban yang terisi: ${Object.keys(answers).filter(k=>String(answers[k]).trim()).length}<br><br><b>Langkah terakhir:</b> klik <b>Kirim LKPD &amp; Unduh PDF</b> agar jawabanmu terkirim ke guru dan PDF-nya terunduh.`;el.scrollIntoView({behavior:'smooth',block:'center'})}else toast('LKPD selesai. Jawaban dapat diunduh dari tahap Generalisasi.')}
+function toast(msg,type){showToast(msg,type||'info')}
+
+// ---------- Simpan otomatis saat mengetik ----------
+document.getElementById('mainContent').addEventListener('input',e=>{if(e.target.id)answers[e.target.id]=e.target.value});
+
+// ---------- Draft progres (disimpan di perangkat murid) ----------
+const kunciDraft=()=>`lkpd2_draft_${currentUser.kelas}_${currentUser.nama}`;
+function simpanProgres(){
+  saveAll();
+  try{localStorage.setItem(kunciDraft(),JSON.stringify({answers,done:[...done]}));toast('Progres LKPD disimpan di perangkat ini.','success')}
+  catch(e){toast('Progres tidak dapat disimpan.','error')}
+}
+function pulihkanDraft(){
+  answers={};done=new Set();current=0;lastStage=0;
+  try{const raw=localStorage.getItem(kunciDraft());if(raw){const d=JSON.parse(raw);answers=d.answers||{};done=new Set(d.done||[])}}catch(e){}
+  render();
+}
+
+// ---------- PDF + kirim ke guru ----------
+const FORMULA_LABEL=['SUM · Total seluruh penjualan','AVERAGE · Rata-rata penjualan','MIN · Penjualan terendah','MAX · Penjualan tertinggi','COUNT · Banyak data angka'];
+const PDF_BAGIAN=[
+ ['Tahap 1 - Stimulation',[['observation','Apa yang membuat spreadsheet berguna untuk tugas ini?']]],
+ ['Tahap 2 - Problem Statement',[['qTotal','Pertanyaan tentang total penjualan'],['qAvg','Pertanyaan tentang rata-rata'],['qMinMax','Pertanyaan tentang nilai tertinggi/terendah'],['hypothesis','Dugaan awal: fungsi yang dibutuhkan']]],
+ ['Tahap 3 - Data Collection',[['appUsed','Aplikasi yang digunakan'],['experimentNote','Catatan percobaan']]],
+ ['Tahap 5 - Verification',[['verification','Cara memastikan hasil benar'],['extremes','Produk penjualan tertinggi dan terendah'],['compare','Jumlah terjual terbanyak = total tertinggi?']]],
+ ['Tahap 6 - Generalization',[['conclusion','Kesimpulan'],['reflection','Refleksi: hal yang sudah dikuasai'],['nextStep','Hal yang masih perlu dilatih']]],
+ ['Challenge',[['challengeAnswer','Analisis dan rekomendasi']]]
+];
+function kumpulkanLkpd(){
+  saveAll();
+  const formula=FORMULA_LABEL.map((l,i)=>[l,(answers['formula'+i]||'').trim(),(answers['result'+i]||'').trim()]);
+  const jawaban={};
+  PDF_BAGIAN.forEach(b=>b[1].forEach(f=>{jawaban[f[0]]=(answers[f[0]]||'').trim()}));
+  return {formula,jawaban,tahapSelesai:done.size};
+}
+function buatPdfLkpd(data){
+  const {jsPDF}=window.jspdf;const doc=new jsPDF();
+  doc.setFontSize(16);doc.text('LKPD - Spreadsheet Ceria: Jelajahi Data Penjualan',14,18);
+  doc.setFontSize(11);
+  doc.text(`Nama   : ${currentUser.nama}`,14,28);
+  doc.text(`Kelas  : ${currentUser.kelas}`,14,34);
+  doc.text(`Waktu  : ${new Date().toLocaleString('id-ID')}`,14,40);
+  doc.text(`Tahap ditandai selesai: ${data.tahapSelesai} dari 6`,14,46);
+  let y=54;
+  const tabel=(judul,head,body)=>{
+    if(y>250){doc.addPage();y=20}
+    doc.setFontSize(12);doc.text(judul,14,y);
+    doc.autoTable({startY:y+3,head:[head],body,headStyles:{fillColor:[36,91,74]},styles:{fontSize:10,cellPadding:2.5,overflow:'linebreak'}});
+    y=doc.lastAutoTable.finalY+10;
+  };
+  PDF_BAGIAN.forEach(b=>{
+    if(b[0].startsWith('Tahap 5')) tabel('Tahap 4 - Data Processing',['Fungsi','Rumus','Hasil'],data.formula.map(r=>r.map(c=>c||'-')));
+    tabel(b[0],['Pertanyaan','Jawaban'],b[1].map(f=>[f[1],data.jawaban[f[0]]||'-']));
+  });
+  return doc;
+}
+async function kirimLkpd(){
+  const data=kumpulkanLkpd();
+  const kosong=data.formula.every(f=>!f[1]&&!f[2])&&Object.values(data.jawaban).every(v=>!v||v==='Microsoft Excel');
+  if(kosong){toast('LKPD masih kosong. Isi dulu sebelum dikirim.','warning');return}
+  const btns=[...document.querySelectorAll('.js-kirim-lkpd')];
+  btns.forEach(b=>{b.dataset.label=b.textContent;b.disabled=true;b.textContent='Mengirim...'});
+  try{
+    const doc=buatPdfLkpd(data);
+    const namaFile=`LKPD_${currentUser.kelas}_${currentUser.nama}`.replace(/[^\w\-]+/g,'_')+'.pdf';
+    doc.save(namaFile);
+    const pdfBase64=doc.output('datauristring').split(',').pop();
+    const res=await kirimKeSheet({tipe:'lkpd',nama:currentUser.nama,kelas:currentUser.kelas,namaFile,pdfBase64,data});
+    if(res.ok)toast('LKPD terkirim ke guru & PDF terunduh!','success');
+    else toast('PDF terunduh, tetapi gagal terkirim: '+res.error,'error');
+  }catch(err){toast('Terjadi kesalahan: '+err,'error')}
+  btns.forEach(b=>{b.disabled=false;b.textContent=b.dataset.label});
+}
+
+Object.assign(window,{goStage,goChallenge,mulaiChallenge,markDone,checkGuided,checkFormulas,fillExamples,saveField,saveAll,showSummary,simpanProgres,pulihkanDraft,kirimLkpd});
+render();
+})();
     </script>
 </body>
 </html>
