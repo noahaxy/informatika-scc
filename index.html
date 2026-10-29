@@ -206,6 +206,244 @@
 #view-lkpd .app .stage-btn.challenge-btn.active{background:#5541a0}
 #view-lkpd .app button:disabled{opacity:.55;cursor:not-allowed}
 
+
+        /* ===== Redesign khusus beranda Informatika Edu ===== */
+        #view-menu{--dash-ink:#30345f;--dash-muted:#777b9b;--dash-purple:#8068e8;--dash-lavender:#e9e5ff;--dash-line:#e8e8f5;display:none!important;background:#f8f8ff;color:var(--dash-ink);font-family:'Inter',sans-serif;min-width:0}
+        #view-menu.active-view{display:flex!important;flex-direction:row!important}
+        #view-menu *{box-sizing:border-box}
+        #view-menu button{font:inherit}
+        #view-menu .menu-sidebar{width:238px;flex:0 0 238px;background:#fff;border-right:1px solid #eeedf8;padding:26px 17px 20px;display:flex;flex-direction:column;min-height:0;z-index:2}
+        #view-menu .menu-brand{display:flex;align-items:center;gap:11px;padding:0 8px 31px}
+        #view-menu .menu-brand-mark{width:42px;height:42px;border-radius:14px;background:linear-gradient(145deg,#8a73f0,#6b5bd5);display:grid;place-items:center;box-shadow:0 7px 16px #7965e72b;flex-shrink:0}
+        #view-menu .menu-brand-mark svg{width:23px;height:23px;fill:none;stroke:#fff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+        #view-menu .menu-brand strong{display:block;font-size:14px;letter-spacing:-.035em;color:#37365f;font-weight:800}
+        #view-menu .menu-brand small{display:block;color:#9698b2;font-size:10px;margin-top:4px}
+        #view-menu .menu-side-label{font-size:9px;font-weight:800;letter-spacing:.15em;color:#a4a4bf;padding:0 12px 12px}
+        #view-menu .menu-nav{display:flex;flex-direction:column;gap:6px}
+        #view-menu .menu-nav-item{width:100%;display:flex;align-items:center;gap:12px;padding:12px 13px;border:0;border-radius:12px;background:transparent;color:#8587a5;text-align:left;font-size:12px;font-weight:600;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+        #view-menu .menu-nav-item:hover{background:#f5f3ff;color:#6c5bd0;transform:translateX(2px)}
+        #view-menu .menu-nav-item.active{background:#eeeaff;color:#6f5bd7;font-weight:750}
+        #view-menu .menu-nav-icon{width:19px;height:19px;display:grid;place-items:center;flex-shrink:0}
+        #view-menu .menu-nav-icon svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+        #view-menu .menu-sidebar-bottom{margin-top:auto;padding:17px 15px;background:linear-gradient(145deg,#f1eeff,#f9f6ff);border:1px solid #ebe6ff;border-radius:16px}
+        #view-menu .menu-tip-icon{width:27px;height:27px;display:grid;place-items:center;border-radius:9px;background:#ded7ff;color:#715bdb;margin-bottom:12px;font-size:16px}
+        #view-menu .menu-sidebar-bottom strong{display:block;font-size:11px;line-height:1.5;color:#4d477f}
+        #view-menu .menu-sidebar-bottom p{font-size:10px;line-height:1.65;color:#8b89a9;margin:7px 0 0}
+        #view-menu .menu-main{flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;background:#f9f9ff}
+        #view-menu .menu-topbar{height:76px;flex:0 0 76px;padding:0 36px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#fff;border-bottom:1px solid #efeff8}
+        #view-menu .menu-breadcrumb{display:flex;align-items:center;gap:10px;font-size:11px;color:#a0a1b9}
+        #view-menu .menu-breadcrumb strong{color:#555779;font-weight:700}
+        #view-menu .breadcrumb-slash{color:#d2d0e5}
+        #view-menu .menu-user{display:flex;align-items:center;gap:12px}
+        #view-menu .menu-user-copy{text-align:right}
+        #view-menu .menu-greeting{font-size:12px;font-weight:750;color:#514b87}
+        #view-menu .menu-user-class{font-size:10px;color:#999bb4;margin-top:4px}
+        #view-menu .menu-avatar{width:38px;height:38px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,#e8e3ff,#d8efff);border:2px solid #fff;box-shadow:0 0 0 1px #e5e2f8;color:#6656c9;font-size:14px;font-weight:800}
+        #view-menu .menu-content{flex:1;min-height:0;overflow-y:auto;padding:27px clamp(20px,3.1vw,44px) 18px;scrollbar-color:#d7d3ef transparent;scrollbar-width:thin}
+        #view-menu .menu-content::-webkit-scrollbar{width:6px}
+        #view-menu .menu-content::-webkit-scrollbar-thumb{background:#d9d5ef;border-radius:20px}
+        #view-menu .menu-hero{position:relative;isolation:isolate;overflow:hidden;min-height:242px;border-radius:23px;padding:31px 34px;display:flex;align-items:center;background:linear-gradient(112deg,#7966df 0%,#8b72eb 52%,#a18bf5 100%);box-shadow:0 13px 30px #7e6be51f;color:#fff}
+        #view-menu .menu-hero-copy{position:relative;z-index:2;width:58%;max-width:570px}
+        #view-menu .menu-eyebrow{display:flex;align-items:center;gap:8px;color:#e8e3ff;font-size:9px;letter-spacing:.16em;font-weight:800}
+        #view-menu .eyebrow-dot{width:6px;height:6px;border-radius:50%;background:#7af0d6;box-shadow:0 0 0 4px #ffffff16}
+        #view-menu .menu-hero h1{font-size:clamp(25px,2.4vw,34px);font-weight:800;letter-spacing:-.055em;line-height:1.18;margin:15px 0 11px;color:#fff}
+        #view-menu .menu-hero h1 span{color:#e4deff}
+        #view-menu .menu-hero-copy>p{font-size:11px;line-height:1.8;color:#f0edff;max-width:390px;margin:0}
+        #view-menu .menu-hero-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:22px}
+        #view-menu .menu-primary-btn{border:0;border-radius:10px;background:#fff;color:#6c58d2;padding:11px 15px;display:inline-flex;align-items:center;gap:18px;font-size:11px;font-weight:800;box-shadow:0 5px 15px #4431a52b;cursor:pointer;transition:transform .2s,box-shadow .2s}
+        #view-menu .menu-primary-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px #4431a53b}
+        #view-menu .menu-primary-btn span{font-size:16px;line-height:10px}
+        #view-menu .menu-hero-note{font-size:9px;color:#e9e4ff;display:flex;align-items:center;gap:6px}
+        #view-menu .menu-note-star{font-size:15px;color:#b4fff0}
+        #view-menu .menu-hero-art{position:absolute;right:2%;top:0;bottom:0;width:43%;min-width:275px;z-index:1}
+        #view-menu .art-orbit{position:absolute;border:1px solid #ffffff38;border-radius:50%;transform:rotate(-22deg)}
+        #view-menu .orbit-one{width:245px;height:245px;right:14%;top:1px}
+        #view-menu .orbit-two{width:190px;height:190px;right:23%;top:28px;border-style:dashed;opacity:.6}
+        #view-menu .art-spark{position:absolute;color:#b6fff0;font-size:25px}
+        #view-menu .spark-one{top:33px;right:19%}
+        #view-menu .spark-two{bottom:39px;right:9%;color:#ffe8a9;font-size:32px}
+        #view-menu .person-head{position:absolute;z-index:3;top:20px;left:37px;width:52px;height:57px;background:#f5c6a8;border:2px solid #6c4d65;border-radius:45% 45% 48% 48%;box-shadow:inset -5px -3px #e8a98f}
+        #view-menu .person-hair{position:absolute;z-index:4;top:13px;left:34px;width:58px;height:29px;background:#43324d;border-radius:48% 55% 30% 20%;transform:rotate(7deg);box-shadow:inset 0 5px #59405a}
+        #view-menu .person-eye{position:absolute;top:25px;width:4px;height:5px;border-radius:50%;background:#45324a}
+        #view-menu .eye-left{left:13px}.eye-right{right:13px}
+        #view-menu .person-smile{position:absolute;left:21px;top:37px;width:10px;height:5px;border-bottom:2px solid #b45f6d;border-radius:0 0 9px 9px}
+        #view-menu .person-neck{position:absolute;z-index:2;top:69px;left:55px;width:17px;height:17px;background:#eab091;border-radius:4px}
+        #view-menu .person-body{position:absolute;top:77px;left:26px;width:76px;height:66px;border-radius:23px 23px 12px 12px;background:linear-gradient(135deg,#5ce0cb,#46b8d2 65%,#3d9cc4);transform:rotate(-7deg);box-shadow:inset -8px -3px #318fb4}
+        #view-menu .person-shirt-mark{position:absolute;left:31px;top:15px;color:#fff1b8;font-size:14px}
+        #view-menu .person-arm{position:absolute;z-index:1;width:18px;height:55px;border-radius:15px;background:#f3bc9f;top:79px}
+        #view-menu .arm-left{left:13px;transform:rotate(25deg)}#view-menu .arm-right{right:0;top:67px;height:46px;transform:rotate(-42deg)}
+        #view-menu .person-leg{position:absolute;top:132px;width:22px;height:53px;border-radius:8px 8px 13px 13px;background:#e8e5ff}
+        #view-menu .leg-left{left:34px;transform:rotate(10deg)}#view-menu .leg-right{left:65px;top:130px;transform:rotate(-17deg)}
+        #view-menu .art-float-card{position:absolute;z-index:5;display:flex;align-items:center;gap:7px;background:#fff;color:#5c568c;border:1px solid #ffffffa8;border-radius:10px;padding:9px 11px;font-size:9px;font-weight:750;box-shadow:0 8px 22px #4431a52b;white-space:nowrap}
+        #view-menu .art-card-top{right:5%;top:48px}
+        #view-menu .art-card-bottom{left:2%;bottom:29px}
+        #view-menu .art-mini-icon{width:22px;height:22px;display:grid;place-items:center;background:#e7e1ff;color:#715bd5;border-radius:7px;font-size:15px}
+        #view-menu .art-check{width:20px;height:20px;display:grid;place-items:center;background:#d8fff3;color:#229b84;border-radius:50%;font-size:12px}
+        #view-menu .art-sheet{position:absolute;right:0;bottom:29px;width:100px;height:84px;padding:8px;border-radius:10px;background:#ffffffde;box-shadow:0 7px 22px #4936a528;transform:rotate(8deg)}
+        #view-menu .sheet-head{display:flex;gap:4px;margin-bottom:6px}
+        #view-menu .sheet-head i{width:5px;height:5px;border-radius:50%;background:#f3a8c8}
+        #view-menu .sheet-head i:nth-child(2){background:#f5d578}.sheet-head i:nth-child(3){background:#72ddc7}
+        #view-menu .sheet-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+        #view-menu .sheet-grid span{height:9px;background:#eeeaff;border-radius:2px}
+        #view-menu .sheet-grid span:nth-child(4n+2){background:#c9c0ff}
+        #view-menu .sheet-grid span:nth-child(4n){background:#b5eee2}
+        #view-menu .sheet-chart{height:21px;display:flex;align-items:flex-end;gap:5px;padding:2px 6px 0}
+        #view-menu .sheet-chart b{width:8px;border-radius:3px 3px 0 0;background:#8b76ed;height:45%}
+        #view-menu .sheet-chart b:nth-child(2){height:80%;background:#66d6c4}.sheet-chart b:nth-child(3){height:60%}.sheet-chart b:nth-child(4){height:95%;background:#66d6c4}.sheet-chart b:nth-child(5){height:70%}
+        #view-menu .menu-hero-decoration{position:absolute;z-index:-1;border-radius:50%;background:#ffffff0c}
+        #view-menu .decoration-a{width:200px;height:200px;right:-55px;top:-100px}
+        #view-menu .decoration-b{width:100px;height:100px;right:44%;bottom:-67px}
+        #view-menu .menu-section-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:29px 0 16px}
+        #view-menu .menu-section-kicker{font-size:9px;letter-spacing:.15em;font-weight:800;color:#9a8be0;margin-bottom:7px}
+        #view-menu .menu-section-heading h2{font-size:20px;line-height:1.25;letter-spacing:-.045em;font-weight:800;color:#3a3b63;margin:0}
+        #view-menu .menu-section-heading p{font-size:10px;color:#9294b0;margin:7px 0 0}
+        #view-menu .menu-topic-pill{display:flex;align-items:center;gap:7px;border:1px solid #e8e5f7;background:#fff;border-radius:999px;padding:9px 12px;font-size:9px;color:#797b9b;font-weight:650;white-space:nowrap}
+        #view-menu .topic-pill-dot{width:6px;height:6px;border-radius:50%;background:#8b75e9;box-shadow:0 0 0 3px #eeeaff}
+        #view-menu .menu-activity-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+        #view-menu .menu-activity-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;min-width:0;min-height:204px;padding:17px 17px 15px;border-radius:17px;border:1px solid #ebeaf6;background:#fff;box-shadow:0 4px 12px #4d4b7c07;cursor:pointer;transition:transform .22s,box-shadow .22s,border-color .22s}
+        #view-menu .menu-activity-card:hover{transform:translateY(-4px);box-shadow:0 12px 26px #4d4b7c12;border-color:#d8d1ff}
+        #view-menu .activity-card-top{width:100%;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+        #view-menu .activity-icon{width:39px;height:39px;border-radius:12px;display:grid;place-items:center}
+        #view-menu .activity-icon svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+        #view-menu .activity-number{font-size:10px;color:#b7b6cc;font-weight:800;letter-spacing:.08em}
+        #view-menu .activity-label{font-size:8px;letter-spacing:.1em;font-weight:800;color:#a0a0b8;margin-bottom:7px}
+        #view-menu .menu-activity-card h3{font-size:13px;font-weight:800;letter-spacing:-.025em;color:#454565;line-height:1.35;margin:0 0 7px}
+        #view-menu .menu-activity-card p{font-size:10px;line-height:1.65;color:#898ba6;margin:0 0 14px}
+        #view-menu .activity-link{display:flex;align-items:center;gap:7px;margin-top:auto;font-size:10px;font-weight:800;color:#7967d8}
+        #view-menu .activity-link span{font-size:15px;transition:transform .2s}
+        #view-menu .menu-activity-card:hover .activity-link span{transform:translate(2px,-2px)}
+        #view-menu .activity-orange .activity-icon{background:#fff0e3;color:#f18d54}
+        #view-menu .activity-blue .activity-icon{background:#e6edff;color:#6385ed}
+        #view-menu .activity-purple .activity-icon{background:#f0e8ff;color:#a176e5}
+        #view-menu .activity-teal .activity-icon{background:#dcf8f0;color:#36b9a0}
+        #view-menu .activity-orange .activity-link{color:#e88a50}
+        #view-menu .activity-blue .activity-link{color:#6482e6}
+        #view-menu .activity-purple .activity-link{color:#9871dd}
+        #view-menu .activity-teal .activity-link{color:#2cae95}
+        #view-menu .menu-footer{display:flex;justify-content:space-between;gap:12px;padding:23px 2px 5px;font-size:9px;color:#a1a2ba}
+        #view-menu .menu-footer>span:first-child{font-weight:800;color:#8585a5}
+        #view-menu .menu-footer b{color:#9a87ed;margin-left:4px}
+        @media(max-width:1150px){
+            #view-menu .menu-sidebar{width:205px;flex-basis:205px;padding-left:13px;padding-right:13px}
+            #view-menu .menu-topbar{padding:0 25px}
+            #view-menu .menu-content{padding-left:25px;padding-right:25px}
+            #view-menu .menu-hero{padding-left:27px}
+            #view-menu .menu-hero-art{right:-2%;transform:scale(.9);transform-origin:right center}
+            #view-menu .menu-activity-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+            #view-menu .menu-activity-card{min-height:190px}
+        }
+        @media(max-width:720px){
+            #view-menu.active-view{flex-direction:column!important}
+            #view-menu .menu-sidebar{width:100%;flex:0 0 auto;min-height:auto;padding:10px 14px;border-right:0;border-bottom:1px solid #eeedf8}
+            #view-menu .menu-brand{padding:0 2px 9px}
+            #view-menu .menu-brand-mark{width:34px;height:34px;border-radius:11px}
+            #view-menu .menu-brand-mark svg{width:19px;height:19px}
+            #view-menu .menu-brand strong{font-size:12px}
+            #view-menu .menu-brand small{font-size:9px;margin-top:2px}
+            #view-menu .menu-side-label,#view-menu .menu-sidebar-bottom{display:none}
+            #view-menu .menu-nav{flex-direction:row;gap:4px;overflow-x:auto;padding-bottom:1px}
+            #view-menu .menu-nav-item{justify-content:center;gap:6px;white-space:nowrap;padding:8px 10px;font-size:10px;flex:0 0 auto}
+            #view-menu .menu-nav-icon{width:15px;height:15px}
+            #view-menu .menu-nav-icon svg{width:15px;height:15px}
+            #view-menu .menu-main{flex:1;min-height:0}
+            #view-menu .menu-topbar{height:58px;flex-basis:58px;padding:0 16px}
+            #view-menu .menu-breadcrumb{font-size:9px;gap:6px}
+            #view-menu .menu-user{gap:8px}
+            #view-menu .menu-greeting{font-size:10px}
+            #view-menu .menu-user-class{font-size:9px}
+            #view-menu .menu-avatar{width:31px;height:31px;border-radius:10px;font-size:12px}
+            #view-menu .menu-content{padding:17px 14px 12px}
+            #view-menu .menu-hero{min-height:230px;padding:24px 20px;border-radius:18px}
+            #view-menu .menu-hero-copy{width:74%}
+            #view-menu .menu-hero h1{font-size:25px}
+            #view-menu .menu-hero-copy>p{font-size:10px;max-width:300px}
+            #view-menu .menu-hero-note{display:none}
+            #view-menu .menu-hero-art{right:-88px;opacity:.55;transform:scale(.8);transform-origin:right center}
+            #view-menu .menu-section-heading{align-items:flex-start;margin:23px 0 13px}
+            #view-menu .menu-section-heading h2{font-size:18px}
+            #view-menu .menu-topic-pill{display:none}
+            #view-menu .menu-activity-grid{gap:10px}
+            #view-menu .menu-activity-card{padding:14px;min-height:190px;border-radius:14px}
+            #view-menu .activity-card-top{margin-bottom:12px}
+            #view-menu .activity-icon{width:34px;height:34px;border-radius:10px}
+            #view-menu .menu-activity-card h3{font-size:12px}
+            #view-menu .menu-activity-card p{font-size:9px}
+            #view-menu .menu-footer{font-size:8px;flex-wrap:wrap;padding-top:18px}
+        }
+        @media(max-width:390px){
+            #view-menu .menu-hero-art{right:-130px;opacity:.35}
+            #view-menu .menu-hero-copy{width:100%}
+            #view-menu .menu-hero h1{font-size:23px}
+            #view-menu .menu-activity-grid{grid-template-columns:1fr}
+            #view-menu .menu-activity-card{min-height:160px}
+            #view-menu .activity-card-top{margin-bottom:9px}
+        }
+        
+/* ===== TEMA LAVENDER UNTUK HALAMAN LKPD ===== */
+#view-lkpd .app {
+    --site-primary: #2563eb;
+    --site-on-primary: #FFFFFF;
+    --site-secondary: #bfdbfe;
+    --site-on-secondary: #1f3185;
+
+    --site-background: #F8F6FF;
+    --site-on-background: #1e293b;
+
+    --surface: #FFFFFF;
+    --surface-soft: #F0EBFF;
+    --text: #1e293b;
+    --muted: #64748b;
+    --line: #E5DDF5;
+
+    --green: #2563eb;
+    --shadow: 0 12px 35px rgba(100, 75, 160, 0.09);
+}
+
+/* Header dan banner utama */
+#view-lkpd .app .topbar {
+    background: #2a1edf;
+}
+
+#view-lkpd .app .hero {
+    background: linear-gradient(120deg, #3222c2, #8c8aef);
+}
+
+/* Tombol dan tahap aktif */
+#view-lkpd .app .btn-dark {
+    background: #6466d8;
+    color: #FFFFFF;
+}
+
+#view-lkpd .app .stage-btn.active {
+    background: #4423b3;
+    color: #FFFFFF;
+}
+
+/* Label tugas inti */
+#view-lkpd .app .core {
+    background: #E6DEFF;
+    color: #1d4ed8;
+}
+
+/* Tahap yang telah selesai */
+#view-lkpd .app .stage-btn.done .stage-num {
+    background: #E6DEFF;
+    color: #1d4ed8;
+    border-color: #E6DEFF;
+}
+
+/* Fokus pada kolom isian */
+#view-lkpd .app .field input:focus,
+#view-lkpd .app .field textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px #60a5fa40;
+}
+
+/* Indikator jawaban benar */
+#view-lkpd .app .feedback.good {
+    color: #4e1ce7;
+}
+
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 h-screen w-screen overflow-hidden flex flex-col">
@@ -238,73 +476,133 @@
                       </select>
                 </div>
                 <button onclick="handleLogin()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-medium py-2.5 rounded-lg transition-colors mt-4 shadow-md shadow-brand-200">
-                    Masuk ke Kelas
+                    Login
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- 2. HALAMAN MENU UTAMA -->
-    <div id="view-menu" class="view-section h-full flex flex-col bg-slate-50">
-        <header class="bg-white border-b px-6 py-4 shadow-sm flex justify-between items-center">
-            <div>
-                <h1 class="text-xl font-bold text-slate-800">Informatika Edu</h1>
-                <p class="text-sm text-slate-500">Materi: Pengolahan Angka</p>
-            </div>
-            <div class="flex items-center gap-3">
-                <div class="text-right hidden sm:block">
-                    <div id="user-greeting" class="font-semibold text-brand-700">Halo, Siswa!</div>
-                    <div id="user-class" class="text-xs text-slate-500">Kelas -</div>
+    <!-- 2. HALAMAN MENU UTAMA: redesign visual, fungsi navigasi tetap -->
+    <div id="view-menu" class="view-section menu-dashboard h-full">
+        <aside class="menu-sidebar">
+            <div class="menu-brand">
+                <div class="menu-brand-mark">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15Z"/><path d="M4 6v14.5M8 7h8M8 10h6"/></svg>
                 </div>
-                <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-bold">
-                    <span id="user-initial">S</span>
-                </div>
+                <div><strong>Informatika SCC</strong><small>Pengolahan Angka dengan Spreadsheet</small></div>
             </div>
-        </header>
 
-        <main class="flex-1 p-6 sm:p-10 overflow-y-auto">
-            <div class="max-w-5xl mx-auto">
-                <h2 class="text-2xl font-bold mb-8 text-slate-800 text-center">Pilih Aktivitas Belajarmu</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Card 1: Pre-test -->
-                    <div onclick="navigateTo('view-pretest')" class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer group">
-                        <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-800 mb-2">1. Pre-test</h3>
-                        <p class="text-slate-500 text-sm">Uji pengetahuan awalmu sebelum mempelajari materi pengolahan angka.</p>
-                    </div>
+            <div class="menu-side-label">MENU UTAMA</div>
+            <nav class="menu-nav" aria-label="Navigasi aktivitas belajar">
+                <button class="menu-nav-item active" type="button" onclick="navigateTo('view-menu')">
+                    <span class="menu-nav-icon"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V10Z"/></svg></span>
+                    <span>Beranda</span>
+                </button>
+                <button class="menu-nav-item" type="button" onclick="navigateTo('view-pretest')">
+                    <span class="menu-nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4.3 1.7c-1.2 1.1-1.8 1.3-1.8 2.8M12 17h.01"/></svg></span>
+                    <span>Pre-test</span>
+                </button>
+                <button class="menu-nav-item" type="button" onclick="navigateTo('view-materi')">
+                    <span class="menu-nav-icon"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15Z"/><path d="M4 6v14.5M8 7h8M8 10h6"/></svg></span>
+                    <span>Materi belajar</span>
+                </button>
+                <button class="menu-nav-item" type="button" onclick="navigateTo('view-lkpd')">
+                    <span class="menu-nav-icon"><svg viewBox="0 0 24 24"><path d="M7 3h8l5 5v12a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5M8 13h8M8 17h6"/></svg></span>
+                    <span>LKPD interaktif</span>
+                </button>
+                <button class="menu-nav-item" type="button" onclick="navigateTo('view-posttest')">
+                    <span class="menu-nav-icon"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5M8.5 12l2.2 2.2 4.8-5"/></svg></span>
+                    <span>Post-test</span>
+                </button>
+            </nav>
 
-                    <!-- Card 2: Materi -->
-                    <div onclick="navigateTo('view-materi')" class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer group">
-                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-800 mb-2">2. Materi Pembelajaran</h3>
-                        <p class="text-slate-500 text-sm">Pelajari komponen antarmuka spreadsheet dan rumus-rumus dasarnya.</p>
-                    </div>
+        
+        </aside>
 
-                    <!-- Card 3: LKPD -->
-                    <div onclick="navigateTo('view-lkpd')" class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer group">
-                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-800 mb-2">3. LKPD Interaktif</h3>
-                        <p class="text-slate-500 text-sm">Praktikkan ilmu yang didapat dengan menyelesaikan tugas studi kasus minimarket.</p>
+        <div class="menu-main">
+            <header class="menu-topbar">
+                <div class="menu-breadcrumb"><span>Ruang belajar</span><span class="breadcrumb-slash">/</span><strong>Pengolahan Angka</strong></div>
+                <div class="menu-user">
+                    <div class="menu-user-copy">
+                        <div id="user-greeting" class="menu-greeting">Halo, Siswa!</div>
+                        <div id="user-class" class="menu-user-class">Kelas -</div>
                     </div>
-
-                    <!-- Card 4: Post-test -->
-                    <div onclick="navigateTo('view-posttest')" class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer group">
-                        <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-slate-800 mb-2">4. Post-test</h3>
-                        <p class="text-slate-500 text-sm">Evaluasi akhir untuk mengukur pemahamanmu setelah belajar dan berlatih.</p>
-                    </div>
+                    <div class="menu-avatar"><span id="user-initial">S</span></div>
                 </div>
-            </div>
-        </main>
+            </header>
+
+            <main class="menu-content">
+                <section class="menu-hero">
+                    <div class="menu-hero-copy">
+                        <div class="menu-eyebrow"><span class="eyebrow-dot"></span> RUANG BELAJAR INFORMATIKA</div>
+                        <h1>Pengolahan Angka<br><span>Laporan Minimarket Primordia</span></h1>
+                        <p>Belajar memahami cara kerja spreadsheet dan penggunaan rumus/formula dasar.</p>
+                        <div class="menu-hero-actions">
+                            <button type="button" class="menu-primary-btn" onclick="navigateTo('view-materi')">Mulai belajar <span aria-hidden="true">↗</span></button>
+                            <span class="menu-hero-note"><span class="menu-note-star">✦</span> Satu langkah dalam satu waktu</span>
+                        </div>
+                    </div>
+                    <div class="menu-hero-art" aria-hidden="true">
+                        <div class="art-orbit orbit-one"></div>
+                        <div class="art-orbit orbit-two"></div>
+                        <div class="art-spark spark-one">✦</div>
+                        <div class="art-spark spark-two">✧</div>
+                        <div class="art-float-card art-card-top"><span class="art-mini-icon">▦</span><span>Spreadsheet</span></div>
+                        
+                        <div class="art-float-card art-card-bottom"><span class="art-check">✓</span><span>Siap mencoba?</span></div>
+                        <div class="art-sheet">
+                            <div class="sheet-head"><i></i><i></i><i></i></div>
+                            <div class="sheet-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                            <div class="sheet-chart"><b></b><b></b><b></b><b></b><b></b></div>
+                        </div>
+                    </div>
+                    <div class="menu-hero-decoration decoration-a"></div>
+                    <div class="menu-hero-decoration decoration-b"></div>
+                </section>
+
+                <section class="menu-section-heading">
+                    <div>
+                        <div class="menu-section-kicker">PERJALANAN BELAJAR</div>
+                        <h2>Pilih aktivitas belajarmu</h2>
+                        <p>Empat langkah untuk memahami pengolahan angka.</p>
+                    </div>
+                    <div class="menu-topic-pill"><span class="topic-pill-dot"></span> Pengolahan Angka</div>
+                </section>
+
+                <section class="menu-activity-grid" aria-label="Aktivitas belajar">
+                    <button type="button" onclick="navigateTo('view-pretest')" class="menu-activity-card activity-orange">
+                        <div class="activity-card-top"><span class="activity-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4.3 1.7c-1.2 1.1-1.8 1.3-1.8 2.8M12 17h.01"/></svg></span><span class="activity-number">01</span></div>
+                        <div class="activity-label">MULAI DARI SINI</div>
+                        <h3>Pre-test</h3>
+                        <p>Uji pengetahuan awalmu sebelum mempelajari materi pengolahan angka.</p>
+                        <span class="activity-link">Mulai tes <span>↗</span></span>
+                    </button>
+                    <button type="button" onclick="navigateTo('view-materi')" class="menu-activity-card activity-blue">
+                        <div class="activity-card-top"><span class="activity-icon"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15Z"/><path d="M4 6v14.5M8 7h8M8 10h6"/></svg></span><span class="activity-number">02</span></div>
+                        <div class="activity-label">EKSPLORASI KONSEP</div>
+                        <h3>Materi Pembelajaran</h3>
+                        <p>Pelajari komponen antarmuka spreadsheet dan rumus-rumus dasarnya.</p>
+                        <span class="activity-link">Jelajahi materi <span>↗</span></span>
+                    </button>
+                    <button type="button" onclick="navigateTo('view-lkpd')" class="menu-activity-card activity-purple">
+                        <div class="activity-card-top"><span class="activity-icon"><svg viewBox="0 0 24 24"><path d="M7 3h8l5 5v12a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5M8 13h8M8 17h6"/></svg></span><span class="activity-number">03</span></div>
+                        <div class="activity-label">COBA LANGSUNG</div>
+                        <h3>LKPD Interaktif</h3>
+                        <p>Praktikkan ilmu yang didapat dengan menyelesaikan tugas studi kasus minimarket.</p>
+                        <span class="activity-link">Kerjakan LKPD <span>↗</span></span>
+                    </button>
+                    <button type="button" onclick="navigateTo('view-posttest')" class="menu-activity-card activity-teal">
+                        <div class="activity-card-top"><span class="activity-icon"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5M8.5 12l2.2 2.2 4.8-5"/></svg></span><span class="activity-number">04</span></div>
+                        <div class="activity-label">UKUR PEMAHAMAN</div>
+                        <h3>Post-test</h3>
+                        <p>Evaluasi akhir untuk mengukur pemahamanmu setelah belajar dan berlatih.</p>
+                        <span class="activity-link">Uji pemahaman <span>↗</span></span>
+                    </button>
+                </section>
+
+                <footer class="menu-footer"><span>Informatika SCC</span><span>Belajar bermakna dimulai dari rasa ingin tahu <b>✦</b></span></footer>
+            </main>
+        </div>
     </div>
 
     <!-- 3. HALAMAN PRE-TEST -->
@@ -388,7 +686,7 @@
                             </label>
                         </div>
                     </div>
-                </div>
+                
 
                 <!-- Soal 4 -->
 <div>
@@ -586,16 +884,25 @@
         <main class="flex-1 overflow-y-auto p-6">
             <div class="max-w-4xl mx-auto space-y-6">
                 
-                <!-- Unduh PPT -->
-                <div class="bg-gradient-to-r from-brand-600 to-blue-500 rounded-xl p-6 text-white shadow-md flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <div>
-                        <h2 class="text-xl font-bold mb-1">Materi Presentasi (PPT)</h2>
-                        <p class="text-blue-100 text-sm">Unduh slide materi untuk dipelajari secara offline.</p>
+                 <!-- Preview & Unduh PPT -->
+                <div class="bg-white rounded-xl border shadow-sm overflow-hidden">
+                    <div class="bg-gradient-to-r from-brand-600 to-blue-500 p-6 text-white flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <div>
+                            <h2 class="text-xl font-bold mb-1">Materi Presentasi (PPT)</h2>
+                            <p class="text-blue-100 text-sm">Lihat slide materi di bawah ini, atau unduh untuk dipelajari secara offline.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <a id="ppt-fullscreen" href="#" target="_blank" rel="noopener" class="bg-white/20 hover:bg-white/30 text-white px-4 py-2.5 rounded-lg font-bold transition-colors text-sm">Layar Penuh</a>
+                            <a id="ppt-download" href="#" target="_blank" rel="noopener" onclick="showToast('Mengunduh PPT Materi...', 'success')" class="bg-white text-brand-600 px-5 py-2.5 rounded-lg font-bold shadow hover:bg-blue-50 transition-colors flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                Unduh PPT
+                            </a>
+                        </div>
                     </div>
-                    <button onclick="showToast('Mengunduh PPT Materi...', 'success')" class="bg-white text-brand-600 px-5 py-2.5 rounded-lg font-bold shadow hover:bg-blue-50 transition-colors flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        Unduh PPT
-                    </button>
+                    <div class="relative w-full bg-slate-100" style="aspect-ratio:16/9">
+                        <iframe id="ppt-preview" title="Preview Materi PPT" loading="lazy" allowfullscreen class="absolute inset-0 w-full h-full border-0"></iframe>
+                    </div>
+                    <p class="text-xs text-slate-500 px-4 py-2">Preview tidak tampil? Klik <b>Layar Penuh</b> untuk membukanya di tab baru.</p>
                 </div>
 
                 <!-- Komponen UI -->
@@ -695,7 +1002,7 @@
         </header>
         <div id="lkpd-scroll" class="flex-1 overflow-y-auto">
         <div class="app">
-<section class="hero"><div class="eyebrow">Lembar Kerja Peserta Didik</div><h1>Latihan Spreadsheet :<br>Jelajahi Data Penjualan</h1><p>Temukan cara mengolah data penjualan minimarket dengan rumus spreadsheet. Amati, bereksperimen, periksa hasil, lalu gunakan data untuk membuat keputusan.</p><div class="hero-bottom"><button class="btn btn-primary" onclick="goStage(0)">Mulai eksplorasi&nbsp; →</button><span class="progress-text" id="heroProgress">0 dari 6 tahap selesai</span></div></section>
+<section class="hero"><div class="eyebrow">Lembar Kerja Peserta Didik</div><h1>Latihan Spreadsheet</h1><p>Temukan cara mengolah data penjualan minimarket dengan rumus spreadsheet. Amati, bereksperimen, periksa hasil, lalu gunakan data untuk membuat keputusan.</p><div class="hero-bottom"><button class="btn btn-primary" onclick="goStage(0)">Mulai eksplorasi&nbsp; →</button><span class="progress-text" id="heroProgress">0 dari 6 tahap selesai</span></div></section>
 <div class="layout"><aside class="sidebar">
 <div class="panel"><div class="student-card"><div class="avatar">👩‍💻</div><div><b id="lkpd-student-name">Petualang Data</b><span id="lkpd-student-class">LKPD · Minimarket Primordia</span></div></div></div>
 <div class="panel"><div class="side-label">Jalur Discovery Learning</div><nav class="stage-list" id="stageList"></nav><div class="scc-box"><div class="side-label">Dukungan belajar SCC</div><p>Mulai dari tugas inti. Buka bantuan bila perlu, atau lanjutkan tantangan saat siap.</p><div class="scc-chips"><span class="chip core">CORE · Inti</span><span class="chip support">SUPPORT · Bantuan</span><span class="chip challenge">CHALLENGE · Tantangan</span></div></div></div>
@@ -1053,6 +1360,7 @@
         // KONFIGURASI  (edit bagian ini)
         // =====================================================
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyPqm-_mUBZABjA5kBZ5MTvx698NUhwIqWaENgmxW05xlq24KHqPV43zMmTLtgMLepa2w/exec';   // URL hasil Deploy Apps Script
+        const PPT_ID = '1xQhMpA69J4ZUFzg_yke-60hzoCanF_oI';
         const KUNCI = { 1: 'B', 2: 'C', 3: 'B', 4: 'B', 5: 'A', 6: 'C', 7: 'B', 8: 'D', 9: 'B', 10: 'C'};         // Kunci jawaban. Tambahkan 4:'A', ... sampai 10
         const TAMPILKAN_SKOR = true;                      // false = siswa tidak melihat skor
 
@@ -1116,7 +1424,7 @@
     <!-- SCRIPT HALAMAN LKPD -->
     <script>
 (function(){
-const stages=[['Stimulation','Pemberian Rangsangan','Amati data dan temukan pertanyaan'],['Problem Statement','Identifikasi Masalah','Susun pertanyaan dan dugaan awal'],['Data Collection','Pengumpulan Data','Buat tabel dan coba rumus'],['Data Processing','Pengolahan Data','Hitung dan analisis hasil'],['Verification','Pembuktian','Periksa ketepatan hasil'],['Generalization','Menarik Kesimpulan','Simpulkan dan refleksikan']];
+const stages=[['Stimulation','Pemberian Stimulus','Amati data dan temukan pertanyaan'],['Problem Statement','Identifikasi Masalah','Susun pertanyaan dan dugaan awal'],['Data Collection','Pengumpulan Data','Buat tabel dan coba rumus'],['Data Processing','Pengolahan Data','Hitung dan analisis hasil'],['Verification','Pembuktian','Periksa ketepatan hasil'],['Generalization','Menarik Kesimpulan','Simpulkan dan refleksikan']];
 const products=[['Air mineral',20,3000],['Roti',15,5000],['Susu',10,8000],['Mi instan',25,3500],['Biskuit',12,7000],['Teh kemasan',18,4000],['Sabun',8,6500],['Kopi',14,9000],['Gula',9,7500],['Minyak goreng',7,16000]];
 const sales=products.map(p=>p[1]*p[2]);const sum=sales.reduce((a,b)=>a+b,0);const avg=sum/sales.length;const min=Math.min(...sales);const max=Math.max(...sales);let current=0;let lastStage=0;let done=new Set();let answers={};
 const rupiah=n=>'Rp'+Number(n).toLocaleString('id-ID');
