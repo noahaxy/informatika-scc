@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informatika - Pengolahan Angka</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar for better UI */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        .view-section { display: none; }
+        .active-view { display: block; }
+        
+        .lkpd-tab-content { display: none; }
+        .lkpd-tab-active { display: block; }
+
+        /* Spreadsheet-like table borders */
+        .sheet-table th, .sheet-table td {
+            border: 1px solid #cbd5e1;
+        }
+        
+        /* Toast Animation */
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        .toast-enter { animation: slideIn 0.3s ease-out forwards; }
+        .toast-exit { animation: fadeOut 0.3s ease-out forwards; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 h-screen w-screen overflow-hidden flex flex-col">
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-2"></div>
+
+    <!-- 1. HALAMAN LOGIN -->
+    <div id="view-login" class="view-section active-view h-full flex items-center justify-center bg-brand-50 p-4">
+        <div class="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full border border-brand-100">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                </div>
+                <h1 class="text-2xl font-bold text-slate-900">Portal Belajar</h1>
+                <p class="text-slate-500 text-sm mt-1">Informatika - Pengolahan Angka (Spreadsheet)</p>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Nama Lengkap</label>
+                    <input type="text" id="login-nama" placeholder="Masukkan nama..." class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Kelas</label>
+                    <select id="login-kelas" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all bg-white">
+                        <option value="">Pilih Kelas</option>
+                        <option value="X-4">Kelas X-4</option>
+                        <option value="X-6">Kelas X-6</option>
+                      </select>
+                </div>
+                <button onclick="handleLogin()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-medium py-2.5 rounded-lg transition-colors mt-4 shadow-md shadow-brand-200">
+                    Masuk ke Kelas
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. HALAMAN MENU UTAMA -->
+    <div id="view-menu" class="view-section h-full flex flex-col bg-slate-50">
+        <header class="bg-white border-b px-6 py-4 shadow-sm flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-slate-800">Informatika Edu</h1>
+                <p class="text-sm text-slate-500">Materi: Pengolahan Angka</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="text-right hidden sm:block">
+                    <div id="user-greeting" class="font-semibold text-brand-700">Halo, Siswa!</div>
+                    <div id="user-class" class="text-xs text-slate-500">Kelas -</div>
+                </div>
+                <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-bold">
+                    <span id="user-initial">S</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 p-6 sm:p-10 overflow-y-auto">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-2xl font-bold mb-8 text-slate-800 text-center">Pilih Aktivitas Belajarmu</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Card 1: Pre-test -->
+                    <div onclick="navigateTo('view-pretest')" class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer group">
+                        <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">1. Pre-test</h3>
+                        <p class="text-slate-500 text-sm">Uji pengetahuan awalmu sebelum mempelajari materi pengolahan angka.</p>
+                    </div>
+
+                    <!-- Card 2: Materi -->
+                    <div onclick="navigateTo('view-materi')" class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer group">
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">2. Materi Pembelajaran</h3>
+                        <p class="text-slate-500 text-sm">Pelajari komponen antarmuka spreadsheet dan rumus-rumus dasarnya.</p>
+                    </div>
+
+                    <!-- Card 3: LKPD -->
+                    <div onclick="navigateTo('view-lkpd')" class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer group">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">3. LKPD Interaktif</h3>
+                        <p class="text-slate-500 text-sm">Praktikkan ilmu yang didapat dengan menyelesaikan tugas studi kasus minimarket.</p>
+                    </div>
+
+                    <!-- Card 4: Post-test -->
+                    <div onclick="navigateTo('view-posttest')" class="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer group">
+                        <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">4. Post-test</h3>
+                        <p class="text-slate-500 text-sm">Evaluasi akhir untuk mengukur pemahamanmu setelah belajar dan berlatih.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 3. HALAMAN PRE-TEST -->
+    <div id="view-pretest" class="view-section h-full flex flex-col bg-slate-50">
+        <header class="bg-white border-b px-6 py-4 shadow-sm flex items-center gap-4">
+            <button onclick="navigateTo('view-menu')" class="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            </button>
+            <h1 class="text-xl font-bold text-slate-800">Pre-test: Pengolahan Angka</h1>
+        </header>
+        <main class="flex-1 overflow-y-auto p-6">
+            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-sm border p-8">
+                <p class="mb-6 text-slate-600 border-b pb-4">Kerjakan 10 soal berikut (Contoh 3 soal) untuk mengukur kemampuan awalmu.</p>
+                
+                <div class="space-y-8">
+                    <!-- Soal 1 -->
+                    <div>
+                        <h4 class="font-medium text-slate-800 mb-3">1. Pertemuan antara baris dan kolom pada spreadsheet disebut...</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="pre1" class="text-brand-600 focus:ring-brand-500">
+                                <span>A. Range</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="pre1" class="text-brand-600 focus:ring-brand-500">
+                                <span>B. Cell (Sel)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="pre1" class="text-brand-600 focus:ring-brand-500">
+                                <span>C. Row</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="pre1" class="text-brand-600 focus:ring-brand-500">
+                                <span>D. Column</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 2 -->
+                    <div>
+                        <h4 class="font-medium text-slate-800 mb-3">2. Fungsi yang digunakan untuk menjumlahkan data pada sebuah range adalah...</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="pre2" class="text-brand-600 focus:ring-brand-500">
+                                <span>A. =AVERAGE()</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="pre2" class="text-brand-600 focus:ring-brand-500">
+                                <span>B. =MAX()</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="pre2" class="text-brand-600 focus:ring-brand-500">
+                                <span>C. =SUM()</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="pre2" class="text-brand-600 focus:ring-brand-500">
+                                <span>D. =COUNT()</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 3 -->
+                    <div>
+                        <h4 class="font-medium text-slate-800 mb-3">3. Untuk mencari nilai tertinggi dari data penjualan, formula yang tepat adalah...</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="pre3" class="text-brand-600 focus:ring-brand-500">
+                                <span>A. =MIN(range)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="pre3" class="text-brand-600 focus:ring-brand-500">
+                                <span>B. =MAX(range)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="pre3" class="text-brand-600 focus:ring-brand-500">
+                                <span>C. =HIGH(range)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="pre3" class="text-brand-600 focus:ring-brand-500">
+                                <span>D. =SUM(range)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex justify-end">
+                    <button onclick="simpanJawaban('Pre-test')" class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-2.5 rounded-lg font-medium shadow-sm transition-colors">
+                        Simpan Jawaban
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 4. HALAMAN MATERI PEMBELAJARAN -->
+    <div id="view-materi" class="view-section h-full flex flex-col bg-slate-50">
+        <header class="bg-white border-b px-6 py-4 shadow-sm flex items-center gap-4">
+            <button onclick="navigateTo('view-menu')" class="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            </button>
+            <h1 class="text-xl font-bold text-slate-800">Materi Pembelajaran</h1>
+        </header>
+        <main class="flex-1 overflow-y-auto p-6">
+            <div class="max-w-4xl mx-auto space-y-6">
+                
+                <!-- Unduh PPT -->
+                <div class="bg-gradient-to-r from-brand-600 to-blue-500 rounded-xl p-6 text-white shadow-md flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div>
+                        <h2 class="text-xl font-bold mb-1">Materi Presentasi (PPT)</h2>
+                        <p class="text-blue-100 text-sm">Unduh slide materi untuk dipelajari secara offline.</p>
+                    </div>
+                    <button onclick="showToast('Mengunduh PPT Materi...', 'success')" class="bg-white text-brand-600 px-5 py-2.5 rounded-lg font-bold shadow hover:bg-blue-50 transition-colors flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Unduh PPT
+                    </button>
+                </div>
+
+                <!-- Komponen UI -->
+                <div class="bg-white rounded-xl p-6 border shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"></path></svg>
+                        Komponen Utama Antarmuka Spreadsheet
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="font-bold text-brand-700 block mb-1">Baris (Row)</span>
+                            <p class="text-sm text-slate-600">Bagian mendatar (horizontal) pada lembar kerja, ditandai dengan angka (1, 2, 3, dst).</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="font-bold text-brand-700 block mb-1">Kolom (Column)</span>
+                            <p class="text-sm text-slate-600">Bagian menurun (vertikal) pada lembar kerja, ditandai dengan huruf (A, B, C, dst).</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="font-bold text-brand-700 block mb-1">Sel (Cell)</span>
+                            <p class="text-sm text-slate-600">Perpotongan antara baris dan kolom. Contoh: Sel B3 (Kolom B, Baris 3).</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="font-bold text-brand-700 block mb-1">Range (Rentang)</span>
+                            <p class="text-sm text-slate-600">Kumpulan dari beberapa sel. Contoh: A1:A5 (Sel A1 sampai A5).</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-100 sm:col-span-2">
+                            <span class="font-bold text-brand-700 block mb-1">Formula Bar</span>
+                            <p class="text-sm text-slate-600">Kotak panjang di bagian atas untuk memasukkan atau menampilkan rumus dan isi dari sebuah sel yang sedang aktif.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rumus Dasar -->
+                <div class="bg-white rounded-xl p-6 border shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path></svg>
+                        Rumus (Fungsi) Dasar Pengolahan Angka
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-4 p-3 hover:bg-slate-50 rounded-lg transition-colors">
+                            <div class="bg-brand-100 text-brand-700 font-mono font-bold px-3 py-1 rounded">SUM</div>
+                            <div>
+                                <p class="text-sm font-medium text-slate-800">Menjumlahkan nilai</p>
+                                <p class="text-xs text-slate-500 mt-1">Contoh: <code class="bg-slate-100 px-1 rounded">=SUM(C2:C10)</code> untuk menjumlahkan semua angka di sel C2 sampai C10.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-3 hover:bg-slate-50 rounded-lg transition-colors">
+                            <div class="bg-brand-100 text-brand-700 font-mono font-bold px-3 py-1 rounded">AVERAGE</div>
+                            <div>
+                                <p class="text-sm font-medium text-slate-800">Mencari nilai rata-rata</p>
+                                <p class="text-xs text-slate-500 mt-1">Contoh: <code class="bg-slate-100 px-1 rounded">=AVERAGE(D2:D10)</code></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-3 hover:bg-slate-50 rounded-lg transition-colors">
+                            <div class="bg-brand-100 text-brand-700 font-mono font-bold px-3 py-1 rounded">MAX</div>
+                            <div>
+                                <p class="text-sm font-medium text-slate-800">Mencari nilai tertinggi (maksimal)</p>
+                                <p class="text-xs text-slate-500 mt-1">Contoh: <code class="bg-slate-100 px-1 rounded">=MAX(E2:E10)</code></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-3 hover:bg-slate-50 rounded-lg transition-colors">
+                            <div class="bg-brand-100 text-brand-700 font-mono font-bold px-3 py-1 rounded">MIN</div>
+                            <div>
+                                <p class="text-sm font-medium text-slate-800">Mencari nilai terendah (minimal)</p>
+                                <p class="text-xs text-slate-500 mt-1">Contoh: <code class="bg-slate-100 px-1 rounded">=MIN(E2:E10)</code></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-3 hover:bg-slate-50 rounded-lg transition-colors">
+                            <div class="bg-brand-100 text-brand-700 font-mono font-bold px-3 py-1 rounded">COUNT</div>
+                            <div>
+                                <p class="text-sm font-medium text-slate-800">Menghitung banyak sel yang berisi angka</p>
+                                <p class="text-xs text-slate-500 mt-1">Contoh: <code class="bg-slate-100 px-1 rounded">=COUNT(A2:A10)</code> untuk menghitung berapa banyak data numerik dari A2 hingga A10.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- 5. HALAMAN LKPD -->
+    <div id="view-lkpd" class="view-section h-full flex flex-col bg-white">
+        <!-- Header LKPD -->
+        <header class="bg-brand-700 text-white px-4 py-3 shadow-md flex items-center justify-between z-10 shrink-0">
+            <div class="flex items-center gap-3">
+                <button onclick="navigateTo('view-menu')" class="p-1.5 hover:bg-brand-600 rounded transition-colors text-white">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                </button>
+                <div>
+                    <h1 class="text-lg font-bold leading-tight">LKPD - Pengolahan Angka</h1>
+                    <p class="text-xs text-brand-200">Laporan Penjualan Minimarket</p>
+                </div>
+            </div>
+            <div class="text-sm font-medium bg-brand-800 px-3 py-1 rounded-full">
+                Progres: <span id="progress-text">1</span> dari 6
+            </div>
+        </header>
+
+        <!-- Main Layout LKPD (Sidebar + Content) -->
+        <div class="flex flex-1 overflow-hidden flex-col md:flex-row">
+            
+            <!-- Sidebar: Alur Pembelajaran -->
+            <aside class="w-full md:w-64 bg-slate-50 border-r md:h-full shrink-0 flex flex-col">
+                <div class="p-4 bg-slate-100 border-b font-bold text-slate-700 text-sm tracking-wider">
+                    ALUR PEMBELAJARAN
+                </div>
+                <ul class="flex-1 overflow-y-auto p-4 space-y-2">
+                    <li class="p-2 rounded-lg bg-green-100 text-green-800 font-medium flex gap-2 items-center text-sm cursor-pointer border border-green-200">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        1. Stimulation
+                    </li>
+                    <li class="p-2 rounded-lg bg-white shadow-sm border-l-4 border-brand-500 font-medium flex gap-2 items-start text-sm cursor-pointer">
+                        <span class="text-brand-500 mt-0.5">●</span>
+                        <div>
+                            <span class="block">2. Problem Statement</span>
+                            <span class="text-xs font-normal text-slate-500 mt-1 block">Apa yang ingin kamu ketahui dari laporan penjualan minimarket?</span>
+                        </div>
+                    </li>
+                    <li class="p-2 rounded-lg hover:bg-slate-100 text-slate-600 flex gap-2 items-center text-sm cursor-pointer">
+                        <span class="text-slate-400">○</span> 3. Data Collection
+                    </li>
+                    <li class="p-2 rounded-lg hover:bg-slate-100 text-slate-600 flex gap-2 items-center text-sm cursor-pointer">
+                        <span class="text-slate-400">○</span> 4. Data Processing
+                    </li>
+                    <li class="p-2 rounded-lg hover:bg-slate-100 text-slate-600 flex gap-2 items-center text-sm cursor-pointer">
+                        <span class="text-slate-400">○</span> 5. Verification
+                    </li>
+                    <li class="p-2 rounded-lg hover:bg-slate-100 text-slate-600 flex gap-2 items-center text-sm cursor-pointer">
+                        <span class="text-slate-400">○</span> 6. Generalize
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Area Aktivitas & Tabs -->
+            <div class="flex-1 flex flex-col h-full bg-slate-100 relative">
+                
+                <!-- Konten Dinamis Area -->
+                <div class="flex-1 overflow-y-auto p-4 sm:p-6 pb-24">
+                    
+                    <!-- TAB 1: CORE (Tugas Inti) -->
+                    <div id="lkpd-core" class="lkpd-tab-content lkpd-tab-active max-w-4xl mx-auto space-y-4">
+                        <div class="bg-white rounded-lg p-5 shadow-sm border-l-4 border-blue-500">
+                            <h2 class="font-bold text-lg text-slate-800 uppercase">CORE | Tugas Inti</h2>
+                            <p class="text-sm text-slate-600">Aktivitas: Mengolah Data Penjualan</p>
+                        </div>
+
+                        <div class="bg-blue-50 rounded-lg p-4 border border-blue-100 text-sm">
+                            <span class="font-bold text-blue-800 block mb-1">PETUNJUK</span>
+                            <p class="text-blue-700">Buat tabel laporan penjualan dan gunakan lima formula untuk memperoleh informasi yang dibutuhkan. Anda bisa menggunakan file Spreadsheet Anda sendiri lalu menyalin hasilnya ke bawah.</p>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-5 shadow-sm border overflow-x-auto">
+                            <h3 class="font-bold text-slate-700 mb-3 text-sm">DATA PENJUALAN</h3>
+                            <table class="w-full text-left border-collapse sheet-table text-sm min-w-[500px]">
+                                <thead class="bg-slate-100 text-slate-600">
+                                    <tr>
+                                        <th class="p-2 font-medium">Nama Produk</th>
+                                        <th class="p-2 font-medium">Harga_satuan</th>
+                                        <th class="p-2 font-medium">Jumlah_terjual</th>
+                                        <th class="p-2 font-medium">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="p-2">Air mineral</td><td class="p-2">3000</td><td class="p-2">20</td><td class="p-1"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-slate-50 focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
+                                    <tr><td class="p-2 bg-slate-50">Minyak Goreng</td><td class="p-2 bg-slate-50">18000</td><td class="p-2 bg-slate-50">18</td><td class="p-1 bg-slate-50"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-white focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
+                                    <tr><td class="p-2">Susu UHT</td><td class="p-2">8000</td><td class="p-2">30</td><td class="p-1"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-slate-50 focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
+                                    <tr><td class="p-2 bg-slate-50">Gula Pasir</td><td class="p-2 bg-slate-50">17000</td><td class="p-2 bg-slate-50">15</td><td class="p-1 bg-slate-50"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-white focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
+                                    <tr><td class="p-2">Indomie</td><td class="p-2">3500</td><td class="p-2">60</td><td class="p-1"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-slate-50 focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
+                                    <tr><td class="p-2 bg-slate-50">Lays Potato</td><td class="p-2 bg-slate-50">13000</td><td class="p-2 bg-slate-50">15</td><td class="p-1 bg-slate-50"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-white focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
+                                    <tr><td class="p-2">Teh celup</td><td class="p-2">8000</td><td class="p-2">16</td><td class="p-1"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-slate-50 focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
+                                    <tr><td class="p-2 bg-slate-50">Luwak white coffee</td><td class="p-2 bg-slate-50">1500</td><td class="p-2 bg-slate-50">70</td><td class="p-1 bg-slate-50"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-white focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
+                                    <tr><td class="p-2">Sabun cair</td><td class="p-2">21000</td><td class="p-2">10</td><td class="p-1"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-slate-50 focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
+                                    <tr><td class="p-2 bg-slate-50">Roti</td><td class="p-2 bg-slate-50">5000</td><td class="p-2 bg-slate-50">8</td><td class="p-1 bg-slate-50"><input type="text" placeholder="[....]" class="w-full border rounded px-2 py-1 text-sm bg-white focus:bg-white outline-none focus:ring-1 focus:ring-brand-400"></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-5 shadow-sm border">
+                            <h3 class="font-bold text-slate-700 mb-4 text-sm">EKSPLORASI FORMULA</h3>
+                            <div class="space-y-3 max-w-xl">
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
+                                    <label class="text-sm font-medium text-slate-600">Total penjualan:</label>
+                                    <input type="text" placeholder="[Formula]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500 font-mono">
+                                    <input type="text" placeholder="[Hasil]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500">
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
+                                    <label class="text-sm font-medium text-slate-600">Rata-rata penjualan:</label>
+                                    <input type="text" placeholder="[Formula]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500 font-mono">
+                                    <input type="text" placeholder="[Hasil]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500">
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
+                                    <label class="text-sm font-medium text-slate-600">Nilai tertinggi:</label>
+                                    <input type="text" placeholder="[Formula]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500 font-mono">
+                                    <input type="text" placeholder="[Hasil]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500">
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
+                                    <label class="text-sm font-medium text-slate-600">Nilai terendah:</label>
+                                    <input type="text" placeholder="[Formula]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500 font-mono">
+                                    <input type="text" placeholder="[Hasil]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500">
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
+                                    <label class="text-sm font-medium text-slate-600">Banyak data:</label>
+                                    <input type="text" placeholder="[Formula]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500 font-mono">
+                                    <input type="text" placeholder="[Hasil]" class="border rounded px-3 py-1.5 text-sm outline-none focus:border-brand-500">
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6 flex flex-wrap gap-3">
+                                <button onclick="bukaSpreadsheet()" class="flex items-center gap-2 border border-green-600 text-green-700 hover:bg-green-50 px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                    Buka Spreadsheet
+                                </button>
+                                <button onclick="simpanProgres()" class="flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path></svg>
+                                    Simpan Progres
+                                </button>
+                                <button id="btn-kirim-lkpd" onclick="kirimLkpd()" class="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                                    <span>Kirim LKPD & Unduh PDF</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: SUPPORT (Bantuan) -->
+                    <div id="lkpd-support" class="lkpd-tab-content max-w-4xl mx-auto space-y-4">
+                        <div class="bg-white rounded-lg p-5 shadow-sm border-l-4 border-yellow-400">
+                            <h2 class="font-bold text-lg text-slate-800 uppercase">SUPPORT | Bantuan Belajar</h2>
+                            <p class="text-sm text-slate-600">Area bantuan jika Anda mengalami kesulitan.</p>
+                        </div>
+                        
+                        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                            <h3 class="font-bold text-yellow-800 mb-2">Kesulitan menentukan formula?</h3>
+                            <p class="text-sm text-yellow-700 mb-6">Pilih salah satu bantuan di bawah ini untuk memandu Anda menyelesaikan Tugas Inti.</p>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                                <button onclick="showToast('Hint 1: Untuk mencari Total, kalikan Harga dengan Jumlah', 'info')" class="bg-white border shadow-sm p-3 rounded-lg text-left hover:border-yellow-400 transition-colors">
+                                    <span class="block font-bold text-slate-700 text-sm">💡 Hint 1</span>
+                                    <span class="text-xs text-slate-500">Petunjuk Awal</span>
+                                </button>
+                                <button onclick="showToast('Hint 2: Gunakan fungsi SUM, AVERAGE, MIN, MAX, COUNT', 'info')" class="bg-white border shadow-sm p-3 rounded-lg text-left hover:border-yellow-400 transition-colors">
+                                    <span class="block font-bold text-slate-700 text-sm">🧩 Hint 2</span>
+                                    <span class="text-xs text-slate-500">Petunjuk Fungsi</span>
+                                </button>
+                                <button onclick="showToast('Contoh: Total Air Mineral = 3000 * 20 = 60000', 'info')" class="bg-white border shadow-sm p-3 rounded-lg text-left hover:border-yellow-400 transition-colors">
+                                    <span class="block font-bold text-slate-700 text-sm">📝 Contoh</span>
+                                    <span class="text-xs text-slate-500">Contoh Penyelesaian</span>
+                                </button>
+                                <button onclick="showToast('Latihan Terbimbing belum tersedia.', 'warning')" class="bg-white border shadow-sm p-3 rounded-lg text-left hover:border-yellow-400 transition-colors">
+                                    <span class="block font-bold text-slate-700 text-sm">🎯 Latihan</span>
+                                    <span class="text-xs text-slate-500">Latihan Terbimbing</span>
+                                </button>
+                            </div>
+                            
+                            <p class="text-sm text-yellow-800 mb-3">Setelah selesai mempelajari bantuan, silakan kembali ke tugas Core.</p>
+                            <button onclick="switchLkpdTab('core')" class="bg-yellow-100 hover:bg-yellow-200 text-yellow-800 px-4 py-2 rounded font-medium text-sm transition-colors flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                                Kembali ke Core
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3: CHALLENGE (Tantangan) -->
+                    <div id="lkpd-challenge" class="lkpd-tab-content max-w-4xl mx-auto space-y-4">
+                        <div class="bg-white rounded-lg p-5 shadow-sm border-l-4 border-purple-500">
+                            <h2 class="font-bold text-lg text-slate-800 uppercase">CHALLENGE | Analisis Lanjutan</h2>
+                            <p class="text-sm text-slate-600">Ruang eksplorasi lanjutan untuk siswa yang ingin tantangan ekstra.</p>
+                        </div>
+
+                        <div class="bg-purple-50 border border-purple-200 rounded-lg p-6">
+                            <h3 class="font-bold text-purple-800 mb-2">MISI: MENJADI ANALIS PENJUALAN</h3>
+                            <p class="text-sm text-purple-700 mb-6">Pemilik minimarket ingin memahami kondisi penjualannya sebelum menentukan tindak lanjut.</p>
+                            
+                            <div class="space-y-4 mb-6">
+                                <div class="bg-white p-4 rounded-lg shadow-sm border border-purple-100">
+                                    <h4 class="font-bold text-slate-700 text-sm mb-1">MISI 1</h4>
+                                    <p class="text-sm text-slate-600">Bandingkan nilai penjualan tertinggi dengan jumlah unit yang terjual. Apakah produk paling mahal menghasilkan total paling tinggi?</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm border border-purple-100">
+                                    <h4 class="font-bold text-slate-700 text-sm mb-1">MISI 2</h4>
+                                    <p class="text-sm text-slate-600">Analisis produk mana yang penjualannya berada di bawah rata-rata (AVERAGE) penjualan keseluruhan.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm border border-purple-100">
+                                    <h4 class="font-bold text-slate-700 text-sm mb-1">MISI 3</h4>
+                                    <p class="text-sm text-slate-600">Susun rekomendasi tindakan untuk pemilik toko (misal: diskon, restock, dll) berdasarkan data terendah (MIN) dan tertinggi (MAX).</p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg shadow-sm border border-purple-100">
+                                    <h4 class="font-bold text-slate-700 text-sm mb-1">MISI 4</h4>
+                                    <p class="text-sm text-slate-600">Buatlah laporan sederhana berisi satu buah diagram batang penjualan dan kesimpulan analisis Anda di Spreadsheet.</p>
+                                </div>
+                            </div>
+                            
+                            <button onclick="showToast('Challenge Dimulai! Silakan kerjakan di Spreadsheet Anda.', 'success')" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2.5 rounded-lg font-medium text-sm transition-colors shadow-sm">
+                                Mulai Challenge
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Navigasi Bawah LKPD (Tabs) -->
+                <div class="absolute bottom-0 left-0 right-0 bg-white border-t shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] flex">
+                    <button id="tab-btn-core" onclick="switchLkpdTab('core')" class="flex-1 py-4 text-center font-bold text-sm text-brand-600 border-t-2 border-brand-600 bg-brand-50 transition-colors">
+                        CORE <span class="hidden sm:inline">| Tugas Inti</span>
+                    </button>
+                    <button id="tab-btn-support" onclick="switchLkpdTab('support')" class="flex-1 py-4 text-center font-bold text-sm text-slate-500 border-t-2 border-transparent hover:bg-slate-50 transition-colors">
+                        SUPPORT <span class="hidden sm:inline">| Bantuan</span>
+                    </button>
+                    <button id="tab-btn-challenge" onclick="switchLkpdTab('challenge')" class="flex-1 py-4 text-center font-bold text-sm text-slate-500 border-t-2 border-transparent hover:bg-slate-50 transition-colors">
+                        CHALLENGE <span class="hidden sm:inline">| Lanjutan</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. HALAMAN POST-TEST -->
+    <div id="view-posttest" class="view-section h-full flex flex-col bg-slate-50">
+        <header class="bg-white border-b px-6 py-4 shadow-sm flex items-center gap-4">
+            <button onclick="navigateTo('view-menu')" class="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            </button>
+            <h1 class="text-xl font-bold text-slate-800">Post-test: Evaluasi Akhir</h1>
+        </header>
+        <main class="flex-1 overflow-y-auto p-6">
+            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-sm border p-8">
+                <p class="mb-6 text-slate-600 border-b pb-4">Kerjakan 10 soal berikut (Sama dengan Pre-test) untuk mengukur pemahaman akhirmu setelah belajar.</p>
+                
+                <div class="space-y-8">
+                    <!-- Soal 1 -->
+                    <div>
+                        <h4 class="font-medium text-slate-800 mb-3">1. Pertemuan antara baris dan kolom pada spreadsheet disebut...</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="post1" class="text-brand-600 focus:ring-brand-500">
+                                <span>A. Range</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="post1" class="text-brand-600 focus:ring-brand-500">
+                                <span>B. Cell (Sel)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="post1" class="text-brand-600 focus:ring-brand-500">
+                                <span>C. Row</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="post1" class="text-brand-600 focus:ring-brand-500">
+                                <span>D. Column</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 2 -->
+                    <div>
+                        <h4 class="font-medium text-slate-800 mb-3">2. Fungsi yang digunakan untuk menjumlahkan data pada sebuah range adalah...</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="post2" class="text-brand-600 focus:ring-brand-500">
+                                <span>A. =AVERAGE()</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="post2" class="text-brand-600 focus:ring-brand-500">
+                                <span>B. =MAX()</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="post2" class="text-brand-600 focus:ring-brand-500">
+                                <span>C. =SUM()</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="post2" class="text-brand-600 focus:ring-brand-500">
+                                <span>D. =COUNT()</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Soal 3 -->
+                    <div>
+                        <h4 class="font-medium text-slate-800 mb-3">3. Untuk mencari nilai tertinggi dari data penjualan, formula yang tepat adalah...</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="post3" class="text-brand-600 focus:ring-brand-500">
+                                <span>A. =MIN(range)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="post3" class="text-brand-600 focus:ring-brand-500">
+                                <span>B. =MAX(range)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="post3" class="text-brand-600 focus:ring-brand-500">
+                                <span>C. =HIGH(range)</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+                                <input type="radio" name="post3" class="text-brand-600 focus:ring-brand-500">
+                                <span>D. =SUM(range)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex justify-end">
+                    <button onclick="simpanJawaban('Post-test')" class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-2.5 rounded-lg font-medium shadow-sm transition-colors">
+                        Simpan Jawaban Akhir
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- SCRIPT JAVASCRIPT -->
+    <script>
+        // Data State
+        let currentUser = {
+            nama: '',
+            kelas: ''
+        };
+
+        // --- SISTEM NOTIFIKASI TOAST (Pengganti Alert) ---
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            // Pewarnaan berdasarkan tipe
+            let bgColor = 'bg-slate-800';
+            let icon = 'ℹ️';
+            
+            if (type === 'success') { bgColor = 'bg-green-600'; icon = '✅'; }
+            else if (type === 'warning') { bgColor = 'bg-yellow-500'; icon = '⚠️'; }
+            else if (type === 'error') { bgColor = 'bg-red-500'; icon = '❌'; }
+            
+            toast.className = `${bgColor} text-white px-4 py-3 rounded shadow-lg flex items-center gap-3 text-sm font-medium toast-enter max-w-sm`;
+            toast.innerHTML = `<span>${icon}</span> <span>${message}</span>`;
+            
+            container.appendChild(toast);
+            
+            // Hilangkan otomatis setelah 3 detik
+            setTimeout(() => {
+                toast.classList.remove('toast-enter');
+                toast.classList.add('toast-exit');
+                setTimeout(() => toast.remove(), 300); // Tunggu animasi selesai
+            }, 3000);
+        }
+
+        // --- SISTEM NAVIGASI (SPA) ---
+        function navigateTo(viewId) {
+            // Sembunyikan semua section
+            document.querySelectorAll('.view-section').forEach(el => {
+                el.classList.remove('active-view');
+            });
+            // Tampilkan section yang dituju
+            document.getElementById(viewId).classList.add('active-view');
+        }
+
+        // --- HANDLER LOGIN ---
+        function handleLogin() {
+            const namaInput = document.getElementById('login-nama').value.trim();
+            const kelasInput = document.getElementById('login-kelas').value;
+
+            if (namaInput === '' || kelasInput === '') {
+                showToast('Harap isi Nama dan Kelas terlebih dahulu!', 'warning');
+                return;
+            }
+
+            currentUser.nama = namaInput;
+            currentUser.kelas = kelasInput;
+
+            // Update UI Menu Utama
+            document.getElementById('user-greeting').innerText = `Halo, ${currentUser.nama.split(' ')[0]}!`;
+            document.getElementById('user-class').innerText = `Kelas ${currentUser.kelas}`;
+            document.getElementById('user-initial').innerText = currentUser.nama.charAt(0).toUpperCase();
+
+            kirimKeSheet({ tipe: 'login', nama: currentUser.nama, kelas: currentUser.kelas });
+            pulihkanDraft();
+
+            // Pindah ke menu
+            showToast('Berhasil Masuk!', 'success');
+            navigateTo('view-menu');
+        }
+
+        // --- HANDLER TAB LKPD ---
+        function switchLkpdTab(tabName) {
+            // Sembunyikan semua konten tab
+            document.querySelectorAll('.lkpd-tab-content').forEach(el => {
+                el.classList.remove('lkpd-tab-active');
+            });
+            
+            // Reset style tombol tab
+            const tabs = ['core', 'support', 'challenge'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-btn-${t}`);
+                btn.className = 'flex-1 py-4 text-center font-bold text-sm text-slate-500 border-t-2 border-transparent hover:bg-slate-50 transition-colors';
+            });
+
+            // Aktifkan konten & style tab yang dipilih
+            document.getElementById(`lkpd-${tabName}`).classList.add('lkpd-tab-active');
+            
+            const activeBtn = document.getElementById(`tab-btn-${tabName}`);
+            let themeColor = 'brand-600'; // Default Core
+            let themeBg = 'brand-50';
+            
+            if(tabName === 'support') { themeColor = 'yellow-600'; themeBg = 'yellow-50'; }
+            if(tabName === 'challenge') { themeColor = 'purple-600'; themeBg = 'purple-50'; }
+            
+            activeBtn.className = `flex-1 py-4 text-center font-bold text-sm text-${themeColor} border-t-2 border-${themeColor} bg-${themeBg} transition-colors`;
+        }
+
+        // =====================================================
+        // KONFIGURASI  (edit bagian ini)
+        // =====================================================
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyPqm-_mUBZABjA5kBZ5MTvx698NUhwIqWaENgmxW05xlq24KHqPV43zMmTLtgMLepa2w/exec';   // URL hasil Deploy Apps Script
+        const KUNCI = { 1: 'B', 2: 'C', 3: 'B' };         // Kunci jawaban. Tambahkan 4:'A', ... sampai 10
+        const TAMPILKAN_SKOR = true;                      // false = siswa tidak melihat skor
+
+        // --- Kirim data ke Google Apps Script ---
+        async function kirimKeSheet(payload) {
+            if (SCRIPT_URL.startsWith('GANTI')) {
+                return { ok: false, error: 'SCRIPT_URL belum diisi' };
+            }
+            try {
+                const res = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload) });
+                return await res.json();
+            } catch (err) {
+                return { ok: false, error: String(err) };
+            }
+        }
+
+        // --- PRE-TEST & POST-TEST ---
+        function ambilJawabanTes(prefix) {
+            const jawaban = {};
+            const names = [...new Set([...document.querySelectorAll(`input[type=radio][name^="${prefix}"]`)].map(r => r.name))];
+            names.forEach(name => {
+                const radios = [...document.querySelectorAll(`input[name="${name}"]`)];
+                const idx = radios.findIndex(r => r.checked);
+                jawaban[name.replace(prefix, '')] = idx >= 0 ? 'ABCD'[idx] : '';
+            });
+            return jawaban;
+        }
+
+        async function simpanJawaban(tipe) {
+            const isPre = tipe === 'Pre-test';
+            const jawaban = ambilJawabanTes(isPre ? 'pre' : 'post');
+
+            const kosong = Object.values(jawaban).filter(v => v === '').length;
+            if (kosong > 0) { showToast(`Masih ada ${kosong} soal yang belum dijawab!`, 'warning'); return; }
+
+            const total = Object.keys(KUNCI).length;
+            const benar = Object.keys(KUNCI).filter(no => jawaban[no] === KUNCI[no]).length;
+            const skor = total ? Math.round(benar / total * 100) : 0;
+
+            const btn = event.target.closest('button');
+            btn.disabled = true; btn.innerText = 'Menyimpan...';
+
+            const res = await kirimKeSheet({
+                tipe: isPre ? 'pretest' : 'posttest',
+                nama: currentUser.nama, kelas: currentUser.kelas,
+                jawaban, benar, total, skor
+            });
+
+            btn.disabled = false; btn.innerText = 'Simpan Jawaban';
+            if (!res.ok) { showToast('Gagal menyimpan: ' + res.error, 'error'); return; }
+
+            showToast(TAMPILKAN_SKOR ? `${tipe} tersimpan! Skor: ${skor}` : `Jawaban ${tipe} berhasil disimpan!`, 'success');
+            setTimeout(() => navigateTo('view-menu'), 1800);
+        }
+
+        // --- LKPD ---
+        function ambilDataLkpd() {
+            const baris = [...document.querySelectorAll('#lkpd-core tbody tr')].map(tr => {
+                const td = tr.querySelectorAll('td');
+                return [td[0].innerText.trim(), td[1].innerText.trim(), td[2].innerText.trim(), td[3].querySelector('input').value.trim()];
+            });
+            const formula = [...document.querySelectorAll('#lkpd-core .grid')].map(g => {
+                const inp = g.querySelectorAll('input');
+                return [g.querySelector('label').innerText.replace(':', '').trim(), inp[0].value.trim(), inp[1].value.trim()];
+            });
+            return { baris, formula };
+        }
+
+        function buatPdfLkpd(data) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            const tgl = new Date().toLocaleString('id-ID');
+            doc.setFontSize(16); doc.text('LKPD - Pengolahan Angka', 14, 18);
+            doc.setFontSize(11);
+            doc.text(`Nama   : ${currentUser.nama}`, 14, 28);
+            doc.text(`Kelas  : ${currentUser.kelas}`, 14, 34);
+            doc.text(`Waktu  : ${tgl}`, 14, 40);
+
+            doc.autoTable({
+                startY: 48,
+                head: [['Nama Produk', 'Harga Satuan', 'Jumlah Terjual', 'Total (jawaban siswa)']],
+                body: data.baris.map(r => r.map(c => c || '-')),
+                headStyles: { fillColor: [37, 99, 235] }
+            });
+
+            doc.setFontSize(12);
+            doc.text('Eksplorasi Formula', 14, doc.lastAutoTable.finalY + 12);
+            doc.autoTable({
+                startY: doc.lastAutoTable.finalY + 16,
+                head: [['Keterangan', 'Formula', 'Hasil']],
+                body: data.formula.map(r => r.map(c => c || '-')),
+                headStyles: { fillColor: [37, 99, 235] }
+            });
+            return doc;
+        }
+
+        async function kirimLkpd() {
+            const data = ambilDataLkpd();
+            const semuaKosong = data.baris.every(r => r[3] === '') && data.formula.every(f => f[1] === '' && f[2] === '');
+            if (semuaKosong) { showToast('LKPD masih kosong. Isi dulu sebelum dikirim.', 'warning'); return; }
+
+            const btn = document.getElementById('btn-kirim-lkpd');
+            btn.disabled = true; btn.querySelector('span').innerText = 'Mengirim...';
+
+            const doc = buatPdfLkpd(data);
+            const namaFile = `LKPD_${currentUser.kelas}_${currentUser.nama}`.replace(/[^\w\-]+/g, '_') + '.pdf';
+            doc.save(namaFile);   // siswa langsung mengunduh PDF-nya
+
+            const pdfBase64 = doc.output('datauristring').split(',').pop();
+            const res = await kirimKeSheet({
+                tipe: 'lkpd', nama: currentUser.nama, kelas: currentUser.kelas,
+                namaFile, pdfBase64, data
+            });
+
+            btn.disabled = false; btn.querySelector('span').innerText = 'Kirim LKPD & Unduh PDF';
+            if (res.ok) showToast('LKPD terkirim ke guru & PDF terunduh!', 'success');
+            else showToast('PDF terunduh, tetapi gagal terkirim: ' + res.error, 'error');
+        }
+
+        // --- Draft progres LKPD (tersimpan di perangkat siswa) ---
+        function kunciDraft() { return `lkpd_draft_${currentUser.kelas}_${currentUser.nama}`; }
+
+        function simpanProgres() {
+            try {
+                localStorage.setItem(kunciDraft(), JSON.stringify(ambilDataLkpd()));
+                showToast('Progres LKPD disimpan di perangkat ini.', 'success');
+            } catch (e) { showToast('Progres tidak dapat disimpan.', 'error'); }
+        }
+
+        function pulihkanDraft() {
+            try {
+                const raw = localStorage.getItem(kunciDraft());
+                if (!raw) return;
+                const d = JSON.parse(raw);
+                document.querySelectorAll('#lkpd-core tbody tr').forEach((tr, i) => {
+                    if (d.baris[i]) tr.querySelectorAll('td')[3].querySelector('input').value = d.baris[i][3];
+                });
+                document.querySelectorAll('#lkpd-core .grid').forEach((g, i) => {
+                    const inp = g.querySelectorAll('input');
+                    if (d.formula[i]) { inp[0].value = d.formula[i][1]; inp[1].value = d.formula[i][2]; }
+                });
+            } catch (e) { /* abaikan */ }
+        }
+
+        function bukaSpreadsheet() {
+            showToast('Membuka Google Sheets...', 'info');
+            window.open('https://sheets.new', '_blank');
+        }
+    </script>
+</body>
+</html>
