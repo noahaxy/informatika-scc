@@ -1361,6 +1361,30 @@
         // =====================================================
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyPqm-_mUBZABjA5kBZ5MTvx698NUhwIqWaENgmxW05xlq24KHqPV43zMmTLtgMLepa2w/exec';   // URL hasil Deploy Apps Script
         const PPT_ID = '1xQhMpA69J4ZUFzg_yke-60hzoCanF_oI';
+        
+// Hubungkan file PPT dengan preview dan tombol
+const pptPreview = document.getElementById('ppt-preview');
+const pptFullscreen = document.getElementById('ppt-fullscreen');
+const pptDownload = document.getElementById('ppt-download');
+
+if (pptPreview && pptFullscreen && pptDownload) {
+    // Preview PPT di dalam halaman
+    pptPreview.src = `https://drive.google.com/file/d/${PPT_ID}/preview`;
+
+    // Buka file di tab baru
+    pptFullscreen.href =
+        `https://drive.google.com/file/d/${PPT_ID}/view`;
+
+    pptFullscreen.target = '_blank';
+    pptFullscreen.rel = 'noopener';
+
+    // Unduh file PPT
+    pptDownload.href =
+        `https://drive.google.com/uc?export=download&id=${PPT_ID}`;
+
+    pptDownload.target = '_blank';
+    pptDownload.rel = 'noopener';
+}
         const KUNCI = { 1: 'B', 2: 'C', 3: 'B', 4: 'B', 5: 'A', 6: 'C', 7: 'B', 8: 'D', 9: 'B', 10: 'C'};         // Kunci jawaban. Tambahkan 4:'A', ... sampai 10
         const TAMPILKAN_SKOR = true;                      // false = siswa tidak melihat skor
 
